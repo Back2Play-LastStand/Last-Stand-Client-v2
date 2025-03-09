@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IPlayerMovement
@@ -24,11 +25,16 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         // TODO
     }
 
-    public void LookAtMouse(Vector3 inputMousePos)
+    public void LookAtMouse(Vector2 inputMousePos)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(inputMousePos);
-        Vector3 direction = mousePos - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        Ray ray = Camera.main.ScreenPointToRay(inputMousePos);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        if (groundPlane.Raycast(ray, out float enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+            Vector3 currentPoint = new Vector3(hitPoint.x, transform.position.y, hitPoint.z);
+            transform.LookAt(currentPoint);
+        }
     }
 }

@@ -8,8 +8,8 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     private Vector2 m_inputVec;
     public Vector2 InputVec => m_inputVec;
 
-    private Vector3 m_mousePos;
-    public Vector3 MousePos => m_mousePos;
+    private Vector2 m_mousePos;
+    public Vector2 MousePos => m_mousePos;
 
     public void OnMove(InputValue value)
     {
@@ -18,6 +18,6 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
     public void OnLook(InputValue value)
     {
-        //m_mousePos = value.Get<Vector3>();
+        m_mousePos = value.Get<Vector2>();
     }
 }
