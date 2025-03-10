@@ -17,5 +17,6 @@ public class Player : MonoBehaviour
     {
         m_playerMovement.Move(m_playerInput.InputVec);
         m_playerMovement.LookAtMouse(m_playerInput.MousePos);
+        m_playerMovement.PlayAnim(m_playerInput.InputVec);
     }
 }
