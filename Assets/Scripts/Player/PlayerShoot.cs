@@ -15,7 +15,7 @@ public class PlayerShoot : MonoBehaviour, IPlayerAttack
     {
         if(m_firingTime - m_lastFiringTime > m_delay)
         {
-            Instantiate(m_bulletPrefab, m_firingPos);
+            Instantiate(m_bulletPrefab, m_firingPos.position, m_firingPos.rotation);
             m_lastFiringTime = Time.time;
         }
         m_firingTime = Time.time;
