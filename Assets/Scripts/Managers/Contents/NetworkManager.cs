@@ -30,4 +30,14 @@ public class NetworkManager : MonoBehaviour
         _connector.Connect(_ipEndPoint,
             () => { return _session; });
     }
+
+    public void Send(IMessage packet, ushort id)
+    {
+        _session.Send(packet, id);
+    }
+    
+    void OnApplicationQuit()
+    {
+        _connector.Disconnect();
+    }
 }

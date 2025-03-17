@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Managers manager = Managers.Instance;
         m_playerInput = GetComponent<PlayerInput>();
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerShoot = GetComponent<PlayerShoot>();

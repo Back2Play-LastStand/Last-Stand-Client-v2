@@ -43,6 +43,9 @@ public class Connector
             Session session = _sessionFactory.Invoke();
             session.OnConnected(args.RemoteEndPoint);
             session.Start(args.ConnectSocket);
+
+            Protocol.REQ_ENTER packet = new();
+            Managers.Network.Send(packet, (ushort)PacketId.PKT_REQ_ENTER);
         }
         else
         {
