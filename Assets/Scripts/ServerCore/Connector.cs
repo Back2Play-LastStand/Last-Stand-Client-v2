@@ -1,4 +1,4 @@
-using Protocol;
+using Google.Protobuf;
 using ServerCore;
 using System;
 using System.Net;
@@ -41,11 +41,8 @@ public class Connector
         if (args.SocketError == SocketError.Success)
         {
             Session session = _sessionFactory.Invoke();
-            session.OnConnected(args.RemoteEndPoint);
             session.Start(args.ConnectSocket);
-
-            Protocol.REQ_ENTER packet = new();
-            Managers.Network.Send(packet, (ushort)PacketId.PKT_REQ_ENTER);
+            session.OnConnected(args.RemoteEndPoint);
         }
         else
         {

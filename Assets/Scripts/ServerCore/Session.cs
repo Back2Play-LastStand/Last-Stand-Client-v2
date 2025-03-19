@@ -43,7 +43,7 @@ namespace ServerCore
 
     public abstract class Session
     {
-        Socket _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        Socket _socket;
         int _disconnected = 0;
 
         RecvBuffer _recvBuffer = new RecvBuffer(65535);

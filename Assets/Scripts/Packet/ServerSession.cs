@@ -18,6 +18,9 @@ namespace ServerCore
                 return;
 
             Debug.Log($"OnConnected : {endPoint}");
+
+            Protocol.REQ_ENTER pkt = new();
+            Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
         }
 
         public void Send(IMessage packet, ushort id)

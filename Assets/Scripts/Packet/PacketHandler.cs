@@ -4,9 +4,9 @@ using ServerCore;
 
 public class PacketHandler
 {
-    public static void ReqEnterHandler(PacketSession session, IMessage packet)
+    public static void ResEnterHandler(PacketSession session, IMessage packet)
     {
-        REQ_ENTER enterPacket = packet as REQ_ENTER;
+        RES_ENTER enterPacket = packet as RES_ENTER;
         ServerSession serverSession = session as ServerSession;
     }
 }

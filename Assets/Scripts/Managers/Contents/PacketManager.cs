@@ -26,7 +26,7 @@ public class PacketManager : MonoBehaviour
     public void Register()
     {
         _onRecv.Add((ushort)PacketId.PKT_RES_ENTER, MakePacket<Protocol.RES_ENTER>);
-        _handler.Add((ushort)PacketId.PKT_REQ_ENTER, PacketHandler.ReqEnterHandler);
+        _handler.Add((ushort)PacketId.PKT_RES_ENTER, PacketHandler.ResEnterHandler);
     }
 
     public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

@@ -4,6 +4,8 @@ using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 using ServerCore;
+using System.Collections.Generic;
+using System;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -29,6 +31,17 @@ public class NetworkManager : MonoBehaviour
 
         _connector.Connect(_ipEndPoint,
             () => { return _session; });
+    }
+
+    public void Update()
+    {
+        List<PacketMessage> list = PacketQueue.Instance.PopAll();
+        foreach (PacketMessage packet in list)
+        {
+            Action<PacketSession, IMessage> handler = Managers.Packet.GetPacketHandler(packet.Id);
+            if (handler != null)
+                handler.Invoke(_session, packet.Message);
+        }
     }
 
     public void Send(IMessage packet, ushort id)
