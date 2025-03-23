@@ -23,6 +23,11 @@ public class PacketManager : MonoBehaviour
     Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>>();
     Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new Dictionary<ushort, Action<PacketSession, IMessage>>();
 
+    public PacketManager()
+    {
+        Register();
+    }
+
     public void Register()
     {
         _onRecv.Add((ushort)PacketId.PKT_RES_ENTER, MakePacket<Protocol.RES_ENTER>);

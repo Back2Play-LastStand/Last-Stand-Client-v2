@@ -13,7 +13,7 @@ public class Connector
     {
         for (int i = 0; i < count; i++)
         {
-            Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            Socket sock = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             _sessionFactory = sessionFactory;
 
             SocketAsyncEventArgs args = new SocketAsyncEventArgs();
