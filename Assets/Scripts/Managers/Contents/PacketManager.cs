@@ -16,12 +16,16 @@ public enum PacketId : ushort
     PKT_RES_SPAWN = 1006,
     PKT_RES_SPAWN_ALL = 1007,
     PKT_RES_DESPAWN = 1008,
+    PKT_REQ_MOVE = 1009,
+    PKT_RES_MOVE = 1010,
 }
 
 public class PacketManager : MonoBehaviour
 {
     Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>>();
     Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new Dictionary<ushort, Action<PacketSession, IMessage>>();
+
+    public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
     public PacketManager()
     {
@@ -32,6 +36,18 @@ public class PacketManager : MonoBehaviour
     {
         _onRecv.Add((ushort)PacketId.PKT_RES_ENTER, MakePacket<Protocol.RES_ENTER>);
         _handler.Add((ushort)PacketId.PKT_RES_ENTER, PacketHandler.ResEnterHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_LEAVE, MakePacket<Protocol.RES_LEAVE>);
+        _handler.Add((ushort)PacketId.PKT_RES_LEAVE, PacketHandler.ResLeaveHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_ENTER_ROOM, MakePacket<Protocol.RES_ENTER_ROOM>);
+        _handler.Add((ushort)PacketId.PKT_RES_ENTER_ROOM, PacketHandler.ResEnterRoomHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_SPAWN, MakePacket<Protocol.RES_SPAWN>);
+        _handler.Add((ushort)PacketId.PKT_RES_SPAWN, PacketHandler.ResSpawnHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_SPAWN_ALL, MakePacket<Protocol.RES_SPAWN_ALL>);
+        _handler.Add((ushort)PacketId.PKT_RES_SPAWN_ALL, PacketHandler.ResSpawnAllHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_DESPAWN, MakePacket<Protocol.RES_DESPAWN>);
+        _handler.Add((ushort)PacketId.PKT_RES_DESPAWN, PacketHandler.ResDespawnHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_MOVE, MakePacket<Protocol.RES_MOVE>);
+        _handler.Add((ushort)PacketId.PKT_RES_MOVE, PacketHandler.ResMoveHandler);
     }
 
     public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
@@ -44,7 +60,7 @@ public class PacketManager : MonoBehaviour
         count += 2;
 
         Action<PacketSession, ArraySegment<byte>, ushort> action = null;
-        if(_onRecv.TryGetValue(id, out action))
+        if (_onRecv.TryGetValue(id, out action))
             action.Invoke(session, buffer, id);
     }
 
@@ -52,9 +68,17 @@ public class PacketManager : MonoBehaviour
     {
         T pkt = new T();
         pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);
-        Action<PacketSession, IMessage> action = null;
-        if (_handler.TryGetValue(id, out action))
-            action.Invoke(session, pkt);
+
+        if (CustomHandler != null)
+        {
+            CustomHandler.Invoke(session, pkt, id);
+        }
+        else
+        {
+            Action<PacketSession, IMessage> action = null;
+            if (_handler.TryGetValue(id, out action))
+                action.Invoke(session, pkt);
+        }
     }
 
     public Action<PacketSession, IMessage> GetPacketHandler(ushort id)

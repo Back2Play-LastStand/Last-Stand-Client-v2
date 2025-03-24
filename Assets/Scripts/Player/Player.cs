@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerInput m_playerInput;
-    private PlayerMovement m_playerMovement;
-    [SerializeField] private PlayerAim m_playerAim;
-    private PlayerShoot m_playerShoot;
+    public ulong Id { get; set; }
+    protected PlayerMovement m_playerMovement;
+    protected PlayerAim m_playerAim;
+    protected PlayerShoot m_playerShoot;
 
-    void Awake()
+    protected virtual void Awake()
     {
-        Managers manager = Managers.Instance;
-        m_playerInput = GetComponent<PlayerInput>();
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerShoot = GetComponent<PlayerShoot>();
+        m_playerAim = GetComponent<PlayerAim>();
     }
 
-    void Update()
+    public virtual void SetMovement(Vector3 movement)
     {
-        m_playerMovement.Move(m_playerInput.InputVec);
-        m_playerMovement.LookAtMouse(m_playerInput.MousePos);
-        m_playerMovement.PlayAnim(m_playerInput.InputVec);
-        m_playerAim.AimTowardsMouse(m_playerInput.MousePos);
+        m_playerMovement.Move(movement);
+    }
 
-        if(m_playerInput.MouseClick)
+    public virtual void SetRotation(Vector3 lookAtPosition)
+    {
+        m_playerMovement.LookAtMouse(lookAtPosition);
+    }
+
+    public virtual void SetShoot(bool isShooting)
+    {
+        if (isShooting)
             m_playerShoot.Attack();
+    }
+
+    protected virtual void Update()
+    {
+
     }
 }
