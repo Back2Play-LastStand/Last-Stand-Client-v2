@@ -34,9 +34,8 @@ namespace Protocol {
             "Y29sLk9iamVjdEluZm8SDAoEbWluZRgCIAEoCCI2Cg1SRVNfU1BBV05fQUxM",
             "EiUKB3BsYXllcnMYASADKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZvIhoKC1JF",
             "U19ERVNQQVdOEgsKA2lkcxgBIAMoBCIwCghSRVFfTU9WRRIkCgRpbmZvGAEg",
-            "ASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIlYKCFJFU19NT1ZFEiQKBnBs",
-            "YXllchgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8SJAoEaW5mbxgCIAEo",
-            "CzIWLlByb3RvY29sLlBvc2l0aW9uSW5mb2IGcHJvdG8z"));
+            "ASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIjAKCFJFU19NT1ZFEiQKBnBs",
+            "YXllchgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -50,7 +49,7 @@ namespace Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_SPAWN_ALL), global::Protocol.RES_SPAWN_ALL.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_DESPAWN), global::Protocol.RES_DESPAWN.Parser, new[]{ "Ids" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_MOVE), global::Protocol.REQ_MOVE.Parser, new[]{ "Info" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_MOVE), global::Protocol.RES_MOVE.Parser, new[]{ "Player", "Info" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_MOVE), global::Protocol.RES_MOVE.Parser, new[]{ "Player" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2035,7 +2034,6 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RES_MOVE(RES_MOVE other) : this() {
       player_ = other.player_ != null ? other.player_.Clone() : null;
-      info_ = other.info_ != null ? other.info_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2057,18 +2055,6 @@ namespace Protocol {
       }
     }
 
-    /// <summary>Field number for the "info" field.</summary>
-    public const int InfoFieldNumber = 2;
-    private global::Protocol.PositionInfo info_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Protocol.PositionInfo Info {
-      get { return info_; }
-      set {
-        info_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2085,7 +2071,6 @@ namespace Protocol {
         return true;
       }
       if (!object.Equals(Player, other.Player)) return false;
-      if (!object.Equals(Info, other.Info)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2094,7 +2079,6 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (player_ != null) hash ^= Player.GetHashCode();
-      if (info_ != null) hash ^= Info.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2117,10 +2101,6 @@ namespace Protocol {
         output.WriteRawTag(10);
         output.WriteMessage(Player);
       }
-      if (info_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Info);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2135,10 +2115,6 @@ namespace Protocol {
         output.WriteRawTag(10);
         output.WriteMessage(Player);
       }
-      if (info_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Info);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2151,9 +2127,6 @@ namespace Protocol {
       int size = 0;
       if (player_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
-      }
-      if (info_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Info);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2172,12 +2145,6 @@ namespace Protocol {
           Player = new global::Protocol.ObjectInfo();
         }
         Player.MergeFrom(other.Player);
-      }
-      if (other.info_ != null) {
-        if (info_ == null) {
-          Info = new global::Protocol.PositionInfo();
-        }
-        Info.MergeFrom(other.Info);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2201,13 +2168,6 @@ namespace Protocol {
             input.ReadMessage(Player);
             break;
           }
-          case 18: {
-            if (info_ == null) {
-              Info = new global::Protocol.PositionInfo();
-            }
-            input.ReadMessage(Info);
-            break;
-          }
         }
       }
     #endif
@@ -2228,13 +2188,6 @@ namespace Protocol {
               Player = new global::Protocol.ObjectInfo();
             }
             input.ReadMessage(Player);
-            break;
-          }
-          case 18: {
-            if (info_ == null) {
-              Info = new global::Protocol.PositionInfo();
-            }
-            input.ReadMessage(Info);
             break;
           }
         }

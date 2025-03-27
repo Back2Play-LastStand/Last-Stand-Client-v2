@@ -9,10 +9,8 @@ using UnityEngine.InputSystem;
 public interface IPlayerInput
 {
     public Vector2 InputVec { get; }
-    public Vector2 MousePos { get; }
     public bool MouseClick { get; }
 
     void OnMove(InputValue value);
-    void OnLook(InputValue value);
     void OnFire(InputValue value);
 }

@@ -9,5 +9,4 @@ public interface IPlayerMovement
 {
     public void Move(Vector2 inputVec); // Move
     public void MoveTo(Vector3 des); // Move to spesific location
-    public void LookAtMouse(Vector2 inputMousePos); // Look Mouse
 }

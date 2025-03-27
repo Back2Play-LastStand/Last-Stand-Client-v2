@@ -39,7 +39,7 @@ namespace ServerCore
             Array.Copy(BitConverter.GetBytes((ushort)(size + 4)), 0, sendBuffer, 0, sizeof(ushort));
             Array.Copy(BitConverter.GetBytes((ushort)id), 0, sendBuffer, 2, sizeof(ushort));
             Array.Copy(packet.ToByteArray(), 0, sendBuffer, 4, size);
-            Debug.Log($"send packet : {BitConverter.ToString(sendBuffer)}");
+            //Debug.Log($"send packet : {BitConverter.ToString(sendBuffer)}");
             Send(new ArraySegment<byte>(sendBuffer));
         }
 
@@ -55,7 +55,7 @@ namespace ServerCore
 
         public override void OnSend(int numOfBytes)
         {
-            Debug.Log($"SendPacket : {numOfBytes}");
+            //Debug.Log($"SendPacket : {numOfBytes}");
         }
     }
 }
