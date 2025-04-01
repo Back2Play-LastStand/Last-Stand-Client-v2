@@ -27,7 +27,7 @@ namespace Protocol {
             "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sIlUKCk9iamVjdEluZm8SEAoIb2Jq",
             "ZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCRInCgdwb3NJbmZvGAMgASgLMhYu",
             "UHJvdG9jb2wuUG9zaXRpb25JbmZvIioKDFBvc2l0aW9uSW5mbxIMCgRwb3NY",
-            "GAEgASgFEgwKBHBvc1kYAiABKAViBnByb3RvMw=="));
+            "GAEgASgCEgwKBHBvc1kYAiABKAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -358,10 +358,10 @@ namespace Protocol {
 
     /// <summary>Field number for the "posX" field.</summary>
     public const int PosXFieldNumber = 1;
-    private int posX_;
+    private float posX_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int PosX {
+    public float PosX {
       get { return posX_; }
       set {
         posX_ = value;
@@ -370,10 +370,10 @@ namespace Protocol {
 
     /// <summary>Field number for the "posY" field.</summary>
     public const int PosYFieldNumber = 2;
-    private int posY_;
+    private float posY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int PosY {
+    public float PosY {
       get { return posY_; }
       set {
         posY_ = value;
@@ -395,8 +395,8 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PosX != other.PosX) return false;
-      if (PosY != other.PosY) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosX, other.PosX)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosY, other.PosY)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -404,8 +404,8 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PosX != 0) hash ^= PosX.GetHashCode();
-      if (PosY != 0) hash ^= PosY.GetHashCode();
+      if (PosX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosX);
+      if (PosY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosY);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -424,13 +424,13 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PosX != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(PosX);
+      if (PosX != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(PosX);
       }
-      if (PosY != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(PosY);
+      if (PosY != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(PosY);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -442,13 +442,13 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PosX != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(PosX);
+      if (PosX != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(PosX);
       }
-      if (PosY != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(PosY);
+      if (PosY != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(PosY);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -460,11 +460,11 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PosX != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PosX);
+      if (PosX != 0F) {
+        size += 1 + 4;
       }
-      if (PosY != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PosY);
+      if (PosY != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -478,10 +478,10 @@ namespace Protocol {
       if (other == null) {
         return;
       }
-      if (other.PosX != 0) {
+      if (other.PosX != 0F) {
         PosX = other.PosX;
       }
-      if (other.PosY != 0) {
+      if (other.PosY != 0F) {
         PosY = other.PosY;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -499,12 +499,12 @@ namespace Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            PosX = input.ReadInt32();
+          case 13: {
+            PosX = input.ReadFloat();
             break;
           }
-          case 16: {
-            PosY = input.ReadInt32();
+          case 21: {
+            PosY = input.ReadFloat();
             break;
           }
         }
@@ -522,12 +522,12 @@ namespace Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            PosX = input.ReadInt32();
+          case 13: {
+            PosX = input.ReadFloat();
             break;
           }
-          case 16: {
-            PosY = input.ReadInt32();
+          case 21: {
+            PosY = input.ReadFloat();
             break;
           }
         }

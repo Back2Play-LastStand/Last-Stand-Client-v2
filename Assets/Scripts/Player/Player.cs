@@ -17,22 +17,26 @@ public class Player : MonoBehaviour
                 return;
 
             _positionInfo = value;
+            _destPos = new Vector3(value.PosX, transform.position.y, value.PosY);
+            transform.position = _destPos;
             //UpdateAnim();
         }
     }
 
-    public Vector2 VectorPos
+    public Vector3 VectorPos
     {
-        get { return new Vector2(PosInfo.PosX, PosInfo.PosY); }
+        get { return new Vector3(PosInfo.PosX, transform.position.y, PosInfo.PosY); }
         set
         {
-            PosInfo.PosX = (int)value.x;
-            PosInfo.PosY = (int)value.y;
+            PosInfo.PosX = value.x;
+            PosInfo.PosY = value.z;
         }
     }
 
     protected PlayerMovement m_playerMovement;
     protected PlayerShoot m_playerShoot;
+
+    protected Vector3 _destPos;
 
     protected virtual void Start()
     {
@@ -43,11 +47,27 @@ public class Player : MonoBehaviour
     {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerShoot = GetComponent<PlayerShoot>();
+        _destPos = transform.position;
     }
 
     protected virtual void UpdateMovement()
     {
-        m_playerMovement.Move(VectorPos);
+        Vector3 currentPos = transform.position;
+        if (currentPos != _destPos)
+        {
+            Vector3 moveDir = _destPos - currentPos;
+            float dist = moveDir.magnitude;
+            float moveStep = m_playerMovement.m_speed * Time.deltaTime;
+
+            if (dist < moveStep)
+            {
+                transform.position = _destPos;
+            }
+            else
+            {
+                transform.position += moveDir.normalized * moveStep;
+            }
+        }
     }
     protected virtual void UpdateRotation()
     {
@@ -70,5 +90,6 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
+        UpdateMovement();
     }
 }

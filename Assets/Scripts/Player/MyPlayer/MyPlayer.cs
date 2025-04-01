@@ -17,7 +17,6 @@ public class MyPlayer : Player
     {
         base.Update();
 
-        UpdateMovement();
         UpdateAnim();
         UpdateRotation();
 
@@ -32,8 +31,9 @@ public class MyPlayer : Player
 
         if (m_playerInput.InputVec != Vector2.zero)
         {
-            PosInfo.PosX += (int)vec.x;
-            PosInfo.PosY += (int)vec.y;
+            vec = vec * m_playerMovement.m_speed * Time.deltaTime;
+            PosInfo.PosX += vec.x;
+            PosInfo.PosY += vec.y;
 
             REQ_MOVE move = new();
             move.Info = PosInfo;

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IPlayerMovement, IPlayerAnim
 {
-    [SerializeField]
-    private float m_speed;
+    public float m_speed;
     private Rigidbody m_rigid;
 
     private Animator m_anim;
