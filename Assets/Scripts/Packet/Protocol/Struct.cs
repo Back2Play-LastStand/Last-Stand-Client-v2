@@ -24,15 +24,16 @@ namespace Protocol {
     static StructReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sIlUKCk9iamVjdEluZm8SEAoIb2Jq",
-            "ZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCRInCgdwb3NJbmZvGAMgASgLMhYu",
-            "UHJvdG9jb2wuUG9zaXRpb25JbmZvIioKDFBvc2l0aW9uSW5mbxIMCgRwb3NY",
-            "GAEgASgCEgwKBHBvc1kYAiABKAJiBnByb3RvMw=="));
+            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvIlUKCk9iamVj",
+            "dEluZm8SEAoIb2JqZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCRInCgdwb3NJ",
+            "bmZvGAMgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIk4KDFBvc2l0aW9u",
+            "SW5mbxIMCgRwb3NYGAEgASgCEgwKBHBvc1kYAiABKAISIgoHbW92ZURpchgD",
+            "IAEoDjIRLlByb3RvY29sLk1vdmVEaXJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.ObjectInfo), global::Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.PositionInfo), global::Protocol.PositionInfo.Parser, new[]{ "PosX", "PosY" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.PositionInfo), global::Protocol.PositionInfo.Parser, new[]{ "PosX", "PosY", "MoveDir" }, null, null, null, null)
           }));
     }
     #endregion
@@ -347,6 +348,7 @@ namespace Protocol {
     public PositionInfo(PositionInfo other) : this() {
       posX_ = other.posX_;
       posY_ = other.posY_;
+      moveDir_ = other.moveDir_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -380,6 +382,18 @@ namespace Protocol {
       }
     }
 
+    /// <summary>Field number for the "moveDir" field.</summary>
+    public const int MoveDirFieldNumber = 3;
+    private global::Protocol.MoveDir moveDir_ = global::Protocol.MoveDir.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Protocol.MoveDir MoveDir {
+      get { return moveDir_; }
+      set {
+        moveDir_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -397,6 +411,7 @@ namespace Protocol {
       }
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosX, other.PosX)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PosY, other.PosY)) return false;
+      if (MoveDir != other.MoveDir) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -406,6 +421,7 @@ namespace Protocol {
       int hash = 1;
       if (PosX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosX);
       if (PosY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PosY);
+      if (MoveDir != global::Protocol.MoveDir.None) hash ^= MoveDir.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -432,6 +448,10 @@ namespace Protocol {
         output.WriteRawTag(21);
         output.WriteFloat(PosY);
       }
+      if (MoveDir != global::Protocol.MoveDir.None) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) MoveDir);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -450,6 +470,10 @@ namespace Protocol {
         output.WriteRawTag(21);
         output.WriteFloat(PosY);
       }
+      if (MoveDir != global::Protocol.MoveDir.None) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) MoveDir);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -465,6 +489,9 @@ namespace Protocol {
       }
       if (PosY != 0F) {
         size += 1 + 4;
+      }
+      if (MoveDir != global::Protocol.MoveDir.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MoveDir);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -483,6 +510,9 @@ namespace Protocol {
       }
       if (other.PosY != 0F) {
         PosY = other.PosY;
+      }
+      if (other.MoveDir != global::Protocol.MoveDir.None) {
+        MoveDir = other.MoveDir;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -507,6 +537,10 @@ namespace Protocol {
             PosY = input.ReadFloat();
             break;
           }
+          case 24: {
+            MoveDir = (global::Protocol.MoveDir) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -528,6 +562,10 @@ namespace Protocol {
           }
           case 21: {
             PosY = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            MoveDir = (global::Protocol.MoveDir) input.ReadEnum();
             break;
           }
         }

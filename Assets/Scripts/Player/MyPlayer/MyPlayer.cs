@@ -24,6 +24,20 @@ public class MyPlayer : Player
             UpdateAttack();
     }
 
+    MoveDir GetMoveDir(Vector2 moveVec)
+    {
+        if (moveVec == Vector2.zero)
+            return MoveDir.None;
+
+        float angle = Mathf.Atan2(moveVec.y, moveVec.x) * Mathf.Rad2Deg;
+        if (angle < 0) angle += 360f;
+
+        if (angle >= 45f && angle < 135f) return MoveDir.Up;
+        if (angle >= 135f && angle < 225f) return MoveDir.Left;
+        if (angle >= 225f && angle < 315f) return MoveDir.Down;
+        return MoveDir.Right;
+    }
+
     protected override void UpdateMovement()
     {
         Vector2 vec = m_playerInput.InputVec;
@@ -35,9 +49,18 @@ public class MyPlayer : Player
             PosInfo.PosX += vec.x;
             PosInfo.PosY += vec.y;
 
+            Dir = GetMoveDir(m_playerInput.InputVec);
             REQ_MOVE move = new();
             move.Info = PosInfo;
             Managers.Network.Send(move, (ushort)PacketId.PKT_REQ_MOVE);
+        }
+        else
+        {
+            Dir = GetMoveDir(m_playerInput.InputVec);
+            REQ_MOVE move = new();
+            move.Info = PosInfo;
+            Managers.Network.Send(move, (ushort)PacketId.PKT_REQ_MOVE);
+
         }
     }
     protected override void UpdateRotation()
@@ -51,7 +74,7 @@ public class MyPlayer : Player
     }
     protected override void UpdateAttack()
     {
-        m_playerShoot.Attack();
+        base.UpdateAttack();
     }
     protected override void UpdateAnim()
     {

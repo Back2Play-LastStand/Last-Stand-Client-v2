@@ -28,8 +28,26 @@ public class Player : MonoBehaviour
         get { return new Vector3(PosInfo.PosX, transform.position.y, PosInfo.PosY); }
         set
         {
+            if (PosInfo.PosX == value.x && PosInfo.PosY == value.y)
+                return;
+
             PosInfo.PosX = value.x;
             PosInfo.PosY = value.z;
+        }
+    }
+
+    protected MoveDir _lastDir = MoveDir.Down;
+    public MoveDir Dir
+    {
+        get { return PosInfo.MoveDir; }
+        set
+        {
+            if (PosInfo.MoveDir == value)
+                return;
+
+            PosInfo.MoveDir = value;
+            if (value != MoveDir.None)
+                _lastDir = value;
         }
     }
 
@@ -68,15 +86,11 @@ public class Player : MonoBehaviour
                 transform.position += moveDir.normalized * moveStep;
             }
         }
+
+        UpdateAnim();
     }
     protected virtual void UpdateRotation()
     {
-        Vector2 vec = VectorPos;
-        if (vec != Vector2.zero)
-        {
-            Vector3 lookDir = new Vector3(vec.x, 0, vec.y);
-            transform.rotation = Quaternion.LookRotation(lookDir);
-        }
     }
     protected virtual void UpdateAttack()
     {
@@ -84,8 +98,35 @@ public class Player : MonoBehaviour
     }
     protected virtual void UpdateAnim()
     {
-        //m_playerMovement.PlayAnim(new Vector2(PosInfo.PosX, PosInfo.PosY));
-        //m_playerMovement.PlayAnim(VectorPos);
+        if (m_playerMovement == null) return;
+
+        switch (Dir)
+        {
+            case MoveDir.Up:
+                m_playerMovement.PlayAnim(new Vector2(0, 1));
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                Debug.Log("Move Up");
+                break;
+            case MoveDir.Down:
+                m_playerMovement.PlayAnim(new Vector2(0, -1));
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Debug.Log("Move Down");
+                break;
+            case MoveDir.Left:
+                m_playerMovement.PlayAnim(new Vector2(-1, 0));
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+                Debug.Log("Move Left");
+                break;
+            case MoveDir.Right:
+                m_playerMovement.PlayAnim(new Vector2(1, 0));
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+                Debug.Log("Move Right");
+                break;
+            default:
+                m_playerMovement.PlayAnim(Vector2.zero);
+                Debug.Log("Move None");
+                break;
+        }
     }
 
     protected virtual void Update()

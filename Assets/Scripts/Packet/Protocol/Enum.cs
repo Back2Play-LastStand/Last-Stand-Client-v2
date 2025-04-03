@@ -25,10 +25,11 @@ namespace Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgpFbnVtLnByb3RvEghQcm90b2NvbColCgpPYmplY3RUeXBlEgoKBlBMQVlF",
-            "UhAAEgsKB01PTlNURVIQAWIGcHJvdG8z"));
+            "UhAAEgsKB01PTlNURVIQASo6CgdNb3ZlRGlyEggKBE5PTkUQABIGCgJVUBAB",
+            "EggKBERPV04QAhIICgRMRUZUEAMSCQoFUklHSFQQBGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.ObjectType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.ObjectType), typeof(global::Protocol.MoveDir), }, null, null));
     }
     #endregion
 
@@ -37,6 +38,14 @@ namespace Protocol {
   public enum ObjectType {
     [pbr::OriginalName("PLAYER")] Player = 0,
     [pbr::OriginalName("MONSTER")] Monster = 1,
+  }
+
+  public enum MoveDir {
+    [pbr::OriginalName("NONE")] None = 0,
+    [pbr::OriginalName("UP")] Up = 1,
+    [pbr::OriginalName("DOWN")] Down = 2,
+    [pbr::OriginalName("LEFT")] Left = 3,
+    [pbr::OriginalName("RIGHT")] Right = 4,
   }
 
   #endregion
