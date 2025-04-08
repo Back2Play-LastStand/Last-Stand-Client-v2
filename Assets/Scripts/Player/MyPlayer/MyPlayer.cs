@@ -11,6 +11,9 @@ public class MyPlayer : Player
     {
         base.Init();
         m_playerInput = GetComponent<PlayerInput>();
+
+        // UI
+        Managers.UI.ShowSceneUI<UI_Interface>();
     }
 
     protected override void Update()
