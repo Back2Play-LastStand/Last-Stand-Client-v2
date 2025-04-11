@@ -14,6 +14,7 @@ public class MyPlayer : Player
 
         // UI
         Managers.UI.ShowSceneUI<UI_Interface>();
+        Managers.Resource.Instantiate("FollowPlayerCamera");
     }
 
     protected override void Update()
