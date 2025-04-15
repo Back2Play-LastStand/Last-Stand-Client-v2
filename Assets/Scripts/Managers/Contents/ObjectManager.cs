@@ -46,7 +46,12 @@ public class ObjectManager
     }
     public void Remove(ulong id)
     {
+        GameObject go = FindById(id);
+        if (go == null)
+            return;
+
         _objects.Remove(id);
+        Managers.Resource.Destroy(go);
     }
 
     public GameObject FindById(ulong id)

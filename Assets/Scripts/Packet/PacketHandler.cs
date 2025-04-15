@@ -19,7 +19,7 @@ public class PacketHandler
     public static void ResLeaveHandler(PacketSession session, IMessage packet)
     {
         RES_LEAVE leavePacket = packet as RES_LEAVE;
-        Managers.Object.RemoveMyPlayer();
+        Managers.Object.Remove(leavePacket.Object.ObjectId);
     }
     public static void ResEnterRoomHandler(PacketSession session, IMessage packet)
     {
@@ -61,5 +61,9 @@ public class PacketHandler
         Debug.Log("ResMoveHandler");
 
         player.PosInfo = movePacket.Player.PosInfo;
+    }
+    public static void ResSpawnMonsterHandler(PacketSession session, IMessage packet)
+    {
+        RES_SPAWN_MONSTER spawnMonsterPacket = packet as RES_SPAWN_MONSTER;
     }
 }

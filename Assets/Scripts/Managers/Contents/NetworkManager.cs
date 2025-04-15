@@ -49,7 +49,7 @@ public class NetworkManager : MonoBehaviour
         _session.Send(packet, id);
     }
     
-    void OnApplicationQuit()
+    public void ApplicationQuit()
     {
         _connector.Disconnect();
     }

@@ -96,4 +96,9 @@ public class MyPlayer : Player
 
         m_playerMovement.PlayAnim(animDir);
     }
+
+    void OnApplicationQuit()
+    {
+        Managers.Network.ApplicationQuit();
+    }
 }
