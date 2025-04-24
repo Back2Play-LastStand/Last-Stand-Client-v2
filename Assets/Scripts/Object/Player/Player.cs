@@ -3,39 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Creature
 {
-    public ulong Id { get; set; }
-
-    PositionInfo _positionInfo = new PositionInfo();
-    public PositionInfo PosInfo
-    {
-        get { return _positionInfo; }
-        set
-        {
-            if (_positionInfo.Equals(value))
-                return;
-
-            _positionInfo = value;
-            _destPos = new Vector3(value.PosX, transform.position.y, value.PosY);
-            transform.position = _destPos;
-            //UpdateAnim();
-        }
-    }
-
-    public Vector3 VectorPos
-    {
-        get { return new Vector3(PosInfo.PosX, transform.position.y, PosInfo.PosY); }
-        set
-        {
-            if (PosInfo.PosX == value.x && PosInfo.PosY == value.y)
-                return;
-
-            PosInfo.PosX = value.x;
-            PosInfo.PosY = value.z;
-        }
-    }
-
     protected MoveDir _lastDir = MoveDir.Down;
     public MoveDir Dir
     {
@@ -53,8 +22,6 @@ public class Player : MonoBehaviour
 
     protected PlayerMovement m_playerMovement;
     protected PlayerShoot m_playerShoot;
-
-    protected Vector3 _destPos;
 
     protected virtual void Start()
     {

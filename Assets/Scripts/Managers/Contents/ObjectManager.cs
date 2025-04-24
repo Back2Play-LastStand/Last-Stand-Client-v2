@@ -7,6 +7,7 @@ public class ObjectManager
 {
     public MyPlayer MyPlayer { get; set; }
     Dictionary<ulong, GameObject> _objects = new Dictionary<ulong, GameObject>();
+    Dictionary<ulong, GameObject> _monsters = new Dictionary<ulong, GameObject>();
 
     public void Add(ObjectInfo info, bool myPlayer = false)
     {
@@ -30,6 +31,16 @@ public class ObjectManager
             player.Id = info.ObjectId;
             player.PosInfo = info.PosInfo;
         }
+    }
+    public void AddMonster(ObjectInfo info)
+    {
+        GameObject go = Managers.Resource.Instantiate("Monster");
+        go.name = info.Name;
+        _monsters.Add(info.ObjectId, go);
+
+        Monster monster = go.GetComponent<Monster>();
+        monster.Id = info.ObjectId;
+        monster.PosInfo = info.PosInfo;
     }
     public void Add(ulong id, GameObject go)
     {
