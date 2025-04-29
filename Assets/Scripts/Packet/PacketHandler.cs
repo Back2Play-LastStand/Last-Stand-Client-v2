@@ -65,7 +65,7 @@ public class PacketHandler
     public static void ResSpawnMonsterHandler(PacketSession session, IMessage packet)
     {
         RES_SPAWN_MONSTER spawnMonsterPacket = packet as RES_SPAWN_MONSTER;
-        foreach(ObjectInfo monster in spawnMonsterPacket.Monsters)
+        foreach (ObjectInfo monster in spawnMonsterPacket.Monsters)
         {
             Managers.Object.AddMonster(monster);
         }
@@ -77,5 +77,13 @@ public class PacketHandler
     public static void ResAttackMonsterHandler(PacketSession session, IMessage packet)
     {
         RES_ATTACK_MONSTER attackPacket = packet as RES_ATTACK_MONSTER;
+
+        GameObject attacker = Managers.Object.FindById(attackPacket.Attacker.ObjectId);
+        GameObject target = Managers.Object.FindById(attackPacket.Target.ObjectId);
+
+        Creature player = target.GetComponent<Creature>();
+        if (player == null) return;
+        Creature enemy = attacker.GetComponent<Creature>();
+        if (enemy == null) return;
     }
 }
