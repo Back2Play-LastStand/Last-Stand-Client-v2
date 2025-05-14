@@ -20,7 +20,8 @@ public enum PacketId : ushort
     PKT_RES_MOVE = 1010,
     PKT_RES_SPAWN_MONSTER = 1011,
     PKT_RES_MOVE_MONSTER = 1012,
-    PKT_RES_ATTACK_MONSTER = 1013,
+    PKT_REQ_ATTACK_OBJECT = 1013,
+    PKT_RES_ATTACK_OBJECT = 1014,
 }
 
 public class PacketManager : MonoBehaviour
@@ -55,8 +56,8 @@ public class PacketManager : MonoBehaviour
         _handler.Add((ushort)PacketId.PKT_RES_SPAWN_MONSTER, PacketHandler.ResSpawnMonsterHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_MOVE_MONSTER, MakePacket<Protocol.RES_MOVE_MONSTER>);
         _handler.Add((ushort)PacketId.PKT_RES_MOVE_MONSTER, PacketHandler.ResMoveMonsterHandler);
-        _onRecv.Add((ushort)PacketId.PKT_RES_ATTACK_MONSTER, MakePacket<Protocol.RES_ATTACK_MONSTER>);
-        _handler.Add((ushort)PacketId.PKT_RES_ATTACK_MONSTER, PacketHandler.ResAttackMonsterHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_ATTACK_OBJECT, MakePacket<Protocol.RES_ATTACK_OBJECT>);
+        _handler.Add((ushort)PacketId.PKT_REQ_ATTACK_OBJECT, PacketHandler.ResAttackObjectHandler);
     }
 
     public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

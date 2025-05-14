@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Creature : HealthComponent
+public class Creature : HealthComponent, IDamage
 {
+    public uint Amount => _damage;
+    [field: SerializeField]
+    public uint _damage = 10;
     public ulong Id { get; set; }
 
     PositionInfo _positionInfo = new PositionInfo();

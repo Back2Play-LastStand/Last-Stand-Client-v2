@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 958837063034802523}
   - component: {fileID: 8992333435908414309}
   - component: {fileID: -3786518649305382203}
+  - component: {fileID: -7812942123025079085}
   m_Layer: 6
   m_Name: Monster
   m_TagString: Player
@@ -1358,6 +1359,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcf732ae4c068b458f9c942b041dbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startHealth: 100
+  <Health>k__BackingField: 0
+  _damage: 10
+--- !u!114 &-7812942123025079085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353890366430669099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96817b677e3dbe448a9d0d8c809a16cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectiveRange: 10
+  attackRange: 3
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5445245877719055825
 GameObject:
   m_ObjectHideFlags: 0
