@@ -8,6 +8,7 @@ public class Creature : HealthComponent, IDamage
     public uint Amount => _damage;
     [field: SerializeField]
     public uint _damage = 10;
+    [field: SerializeField]
     public ulong Id { get; set; }
 
     PositionInfo _positionInfo = new PositionInfo();

@@ -39,9 +39,11 @@ namespace Protocol {
             "ASgLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbyI7ChFSRVNfU1BBV05fTU9OU1RF",
             "UhImCghtb25zdGVycxgBIAMoCzIULlByb3RvY29sLk9iamVjdEluZm8iOQoQ",
             "UkVTX01PVkVfTU9OU1RFUhIlCgdtb25zdGVyGAEgASgLMhQuUHJvdG9jb2wu",
-            "T2JqZWN0SW5mbyI1ChFSRVFfQVRUQUNLX09CSkVDVBIQCghvYmplY3RJZBgB",
-            "IAEoBBIOCgZkYW1hZ2UYAiABKA0iNQoRUkVTX0FUVEFDS19PQkpFQ1QSEAoI",
-            "b2JqZWN0SWQYASABKAQSDgoGZGFtYWdlGAIgASgNYgZwcm90bzM="));
+            "T2JqZWN0SW5mbyJHChFSRVFfQVRUQUNLX09CSkVDVBIQCghhdHRhY2tlchgB",
+            "IAEoBBIQCghvYmplY3RJZBgCIAEoBBIOCgZkYW1hZ2UYAyABKA0iWQoRUkVT",
+            "X0FUVEFDS19PQkpFQ1QSEAoIYXR0YWNrZXIYASABKAQSEAoIb2JqZWN0SWQY",
+            "AiABKAQSDgoGZGFtYWdlGAMgASgNEhAKCHJlbWFpbkhwGAQgASgNYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,8 +60,8 @@ namespace Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_MOVE), global::Protocol.RES_MOVE.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_SPAWN_MONSTER), global::Protocol.RES_SPAWN_MONSTER.Parser, new[]{ "Monsters" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_MOVE_MONSTER), global::Protocol.RES_MOVE_MONSTER.Parser, new[]{ "Monster" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_ATTACK_OBJECT), global::Protocol.REQ_ATTACK_OBJECT.Parser, new[]{ "ObjectId", "Damage" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_ATTACK_OBJECT), global::Protocol.RES_ATTACK_OBJECT.Parser, new[]{ "ObjectId", "Damage" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_ATTACK_OBJECT), global::Protocol.REQ_ATTACK_OBJECT.Parser, new[]{ "Attacker", "ObjectId", "Damage" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_ATTACK_OBJECT), global::Protocol.RES_ATTACK_OBJECT.Parser, new[]{ "Attacker", "ObjectId", "Damage", "RemainHp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2663,6 +2665,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public REQ_ATTACK_OBJECT(REQ_ATTACK_OBJECT other) : this() {
+      attacker_ = other.attacker_;
       objectId_ = other.objectId_;
       damage_ = other.damage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2674,8 +2677,20 @@ namespace Protocol {
       return new REQ_ATTACK_OBJECT(this);
     }
 
+    /// <summary>Field number for the "attacker" field.</summary>
+    public const int AttackerFieldNumber = 1;
+    private ulong attacker_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Attacker {
+      get { return attacker_; }
+      set {
+        attacker_ = value;
+      }
+    }
+
     /// <summary>Field number for the "objectId" field.</summary>
-    public const int ObjectIdFieldNumber = 1;
+    public const int ObjectIdFieldNumber = 2;
     private ulong objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2687,7 +2702,7 @@ namespace Protocol {
     }
 
     /// <summary>Field number for the "damage" field.</summary>
-    public const int DamageFieldNumber = 2;
+    public const int DamageFieldNumber = 3;
     private uint damage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2713,6 +2728,7 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Attacker != other.Attacker) return false;
       if (ObjectId != other.ObjectId) return false;
       if (Damage != other.Damage) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2722,6 +2738,7 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Attacker != 0UL) hash ^= Attacker.GetHashCode();
       if (ObjectId != 0UL) hash ^= ObjectId.GetHashCode();
       if (Damage != 0) hash ^= Damage.GetHashCode();
       if (_unknownFields != null) {
@@ -2742,12 +2759,16 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ObjectId != 0UL) {
+      if (Attacker != 0UL) {
         output.WriteRawTag(8);
+        output.WriteUInt64(Attacker);
+      }
+      if (ObjectId != 0UL) {
+        output.WriteRawTag(16);
         output.WriteUInt64(ObjectId);
       }
       if (Damage != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Damage);
       }
       if (_unknownFields != null) {
@@ -2760,12 +2781,16 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ObjectId != 0UL) {
+      if (Attacker != 0UL) {
         output.WriteRawTag(8);
+        output.WriteUInt64(Attacker);
+      }
+      if (ObjectId != 0UL) {
+        output.WriteRawTag(16);
         output.WriteUInt64(ObjectId);
       }
       if (Damage != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Damage);
       }
       if (_unknownFields != null) {
@@ -2778,6 +2803,9 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Attacker != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Attacker);
+      }
       if (ObjectId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ObjectId);
       }
@@ -2795,6 +2823,9 @@ namespace Protocol {
     public void MergeFrom(REQ_ATTACK_OBJECT other) {
       if (other == null) {
         return;
+      }
+      if (other.Attacker != 0UL) {
+        Attacker = other.Attacker;
       }
       if (other.ObjectId != 0UL) {
         ObjectId = other.ObjectId;
@@ -2818,10 +2849,14 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ObjectId = input.ReadUInt64();
+            Attacker = input.ReadUInt64();
             break;
           }
           case 16: {
+            ObjectId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
             Damage = input.ReadUInt32();
             break;
           }
@@ -2841,10 +2876,14 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            ObjectId = input.ReadUInt64();
+            Attacker = input.ReadUInt64();
             break;
           }
           case 16: {
+            ObjectId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
             Damage = input.ReadUInt32();
             break;
           }
@@ -2889,8 +2928,10 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RES_ATTACK_OBJECT(RES_ATTACK_OBJECT other) : this() {
+      attacker_ = other.attacker_;
       objectId_ = other.objectId_;
       damage_ = other.damage_;
+      remainHp_ = other.remainHp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2900,8 +2941,20 @@ namespace Protocol {
       return new RES_ATTACK_OBJECT(this);
     }
 
+    /// <summary>Field number for the "attacker" field.</summary>
+    public const int AttackerFieldNumber = 1;
+    private ulong attacker_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Attacker {
+      get { return attacker_; }
+      set {
+        attacker_ = value;
+      }
+    }
+
     /// <summary>Field number for the "objectId" field.</summary>
-    public const int ObjectIdFieldNumber = 1;
+    public const int ObjectIdFieldNumber = 2;
     private ulong objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2913,7 +2966,7 @@ namespace Protocol {
     }
 
     /// <summary>Field number for the "damage" field.</summary>
-    public const int DamageFieldNumber = 2;
+    public const int DamageFieldNumber = 3;
     private uint damage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2921,6 +2974,18 @@ namespace Protocol {
       get { return damage_; }
       set {
         damage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "remainHp" field.</summary>
+    public const int RemainHpFieldNumber = 4;
+    private uint remainHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RemainHp {
+      get { return remainHp_; }
+      set {
+        remainHp_ = value;
       }
     }
 
@@ -2939,8 +3004,10 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Attacker != other.Attacker) return false;
       if (ObjectId != other.ObjectId) return false;
       if (Damage != other.Damage) return false;
+      if (RemainHp != other.RemainHp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2948,8 +3015,10 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Attacker != 0UL) hash ^= Attacker.GetHashCode();
       if (ObjectId != 0UL) hash ^= ObjectId.GetHashCode();
       if (Damage != 0) hash ^= Damage.GetHashCode();
+      if (RemainHp != 0) hash ^= RemainHp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2968,13 +3037,21 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ObjectId != 0UL) {
+      if (Attacker != 0UL) {
         output.WriteRawTag(8);
+        output.WriteUInt64(Attacker);
+      }
+      if (ObjectId != 0UL) {
+        output.WriteRawTag(16);
         output.WriteUInt64(ObjectId);
       }
       if (Damage != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Damage);
+      }
+      if (RemainHp != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(RemainHp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2986,13 +3063,21 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ObjectId != 0UL) {
+      if (Attacker != 0UL) {
         output.WriteRawTag(8);
+        output.WriteUInt64(Attacker);
+      }
+      if (ObjectId != 0UL) {
+        output.WriteRawTag(16);
         output.WriteUInt64(ObjectId);
       }
       if (Damage != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Damage);
+      }
+      if (RemainHp != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(RemainHp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3004,11 +3089,17 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Attacker != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Attacker);
+      }
       if (ObjectId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ObjectId);
       }
       if (Damage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Damage);
+      }
+      if (RemainHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RemainHp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3022,11 +3113,17 @@ namespace Protocol {
       if (other == null) {
         return;
       }
+      if (other.Attacker != 0UL) {
+        Attacker = other.Attacker;
+      }
       if (other.ObjectId != 0UL) {
         ObjectId = other.ObjectId;
       }
       if (other.Damage != 0) {
         Damage = other.Damage;
+      }
+      if (other.RemainHp != 0) {
+        RemainHp = other.RemainHp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3044,11 +3141,19 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ObjectId = input.ReadUInt64();
+            Attacker = input.ReadUInt64();
             break;
           }
           case 16: {
+            ObjectId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
             Damage = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            RemainHp = input.ReadUInt32();
             break;
           }
         }
@@ -3067,11 +3172,19 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            ObjectId = input.ReadUInt64();
+            Attacker = input.ReadUInt64();
             break;
           }
           case 16: {
+            ObjectId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
             Damage = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            RemainHp = input.ReadUInt32();
             break;
           }
         }

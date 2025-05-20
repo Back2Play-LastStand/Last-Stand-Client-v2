@@ -23,8 +23,10 @@ public class Player : Creature
     protected PlayerMovement m_playerMovement;
     protected PlayerShoot m_playerShoot;
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Init();
     }
 

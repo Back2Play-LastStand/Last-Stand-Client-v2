@@ -11,7 +11,7 @@ public class HealthComponent : MonoBehaviour, IDamageReceiver
         get; protected set;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         Health = startHealth;
     }
@@ -19,5 +19,9 @@ public class HealthComponent : MonoBehaviour, IDamageReceiver
     public void GetDamage(IDamage damage)
     {
         Health -= damage.Amount;
+    }
+    public void SetHealth(uint health)
+    {
+        Health = health;
     }
 }

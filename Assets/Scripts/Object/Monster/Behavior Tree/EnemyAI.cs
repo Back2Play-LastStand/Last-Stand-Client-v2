@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Monster
 {
     public int detectiveRange;
     public int attackRange;
@@ -17,8 +17,10 @@ public class EnemyAI : MonoBehaviour
 
     Vector3 originPos;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         originPos = transform.position;
 
         attackSequence = new SequenceNode();
@@ -46,7 +48,20 @@ public class EnemyAI : MonoBehaviour
 
     INode.STATE Attack()
     {
+        if (target.GetComponent<Player>().Health <= 0)
+            return INode.STATE.FAILURE;
+
         Debug.Log("°ø°ÝÁß");
+
+        Debug.Log($"Attacker: {Id}");
+        Protocol.REQ_ATTACK_OBJECT attack = new()
+        {
+            Attacker = Id,
+            ObjectId = target.GetComponent<Player>().Id,
+            Damage = Amount
+        };
+        Managers.Network.Send(attack, (ushort)PacketId.PKT_REQ_ATTACK_OBJECT);
+
         return INode.STATE.RUNNING;
     }
     INode.STATE CheckInAttackRange()

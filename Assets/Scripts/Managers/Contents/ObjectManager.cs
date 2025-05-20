@@ -19,6 +19,7 @@ public class ObjectManager
 
             MyPlayer = go.GetComponent<MyPlayer>();
             MyPlayer.Id = info.ObjectId;
+            MyPlayer.SetHealth(info.Health);
             MyPlayer.PosInfo = info.PosInfo;
         }
         else
@@ -29,6 +30,7 @@ public class ObjectManager
 
             Player player = go.GetComponent<Player>();
             player.Id = info.ObjectId;
+            player.SetHealth(info.Health);
             player.PosInfo = info.PosInfo;
         }
     }
@@ -40,6 +42,7 @@ public class ObjectManager
 
         Monster monster = go.GetComponent<Monster>();
         monster.Id = info.ObjectId;
+        monster.SetHealth(info.Health);
         monster.PosInfo = info.PosInfo;
     }
     public void Add(ulong id, GameObject go)
@@ -69,6 +72,12 @@ public class ObjectManager
     {
         GameObject go = null;
         _objects.TryGetValue(id, out go);
+        return go;
+    }
+    public GameObject FindByMonsterId(ulong id)
+    {
+        GameObject go = null;
+        _monsters.TryGetValue(id, out go);
         return go;
     }
 }

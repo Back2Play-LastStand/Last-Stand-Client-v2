@@ -24,15 +24,16 @@ namespace Protocol {
     static StructReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvIlUKCk9iamVj",
-            "dEluZm8SEAoIb2JqZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCRInCgdwb3NJ",
-            "bmZvGAMgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIk4KDFBvc2l0aW9u",
-            "SW5mbxIMCgRwb3NYGAEgASgCEgwKBHBvc1kYAiABKAISIgoHbW92ZURpchgD",
-            "IAEoDjIRLlByb3RvY29sLk1vdmVEaXJiBnByb3RvMw=="));
+            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvImUKCk9iamVj",
+            "dEluZm8SEAoIb2JqZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCRIOCgZoZWFs",
+            "dGgYAyABKA0SJwoHcG9zSW5mbxgEIAEoCzIWLlByb3RvY29sLlBvc2l0aW9u",
+            "SW5mbyJOCgxQb3NpdGlvbkluZm8SDAoEcG9zWBgBIAEoAhIMCgRwb3NZGAIg",
+            "ASgCEiIKB21vdmVEaXIYAyABKA4yES5Qcm90b2NvbC5Nb3ZlRGlyYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.ObjectInfo), global::Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "PosInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.ObjectInfo), global::Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "Health", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.PositionInfo), global::Protocol.PositionInfo.Parser, new[]{ "PosX", "PosY", "MoveDir" }, null, null, null, null)
           }));
     }
@@ -76,6 +77,7 @@ namespace Protocol {
     public ObjectInfo(ObjectInfo other) : this() {
       objectId_ = other.objectId_;
       name_ = other.name_;
+      health_ = other.health_;
       posInfo_ = other.posInfo_ != null ? other.posInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -110,8 +112,20 @@ namespace Protocol {
       }
     }
 
+    /// <summary>Field number for the "health" field.</summary>
+    public const int HealthFieldNumber = 3;
+    private uint health_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Health {
+      get { return health_; }
+      set {
+        health_ = value;
+      }
+    }
+
     /// <summary>Field number for the "posInfo" field.</summary>
-    public const int PosInfoFieldNumber = 3;
+    public const int PosInfoFieldNumber = 4;
     private global::Protocol.PositionInfo posInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -139,6 +153,7 @@ namespace Protocol {
       }
       if (ObjectId != other.ObjectId) return false;
       if (Name != other.Name) return false;
+      if (Health != other.Health) return false;
       if (!object.Equals(PosInfo, other.PosInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -149,6 +164,7 @@ namespace Protocol {
       int hash = 1;
       if (ObjectId != 0UL) hash ^= ObjectId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Health != 0) hash ^= Health.GetHashCode();
       if (posInfo_ != null) hash ^= PosInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -176,8 +192,12 @@ namespace Protocol {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (Health != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Health);
+      }
       if (posInfo_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(PosInfo);
       }
       if (_unknownFields != null) {
@@ -198,8 +218,12 @@ namespace Protocol {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (Health != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Health);
+      }
       if (posInfo_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(PosInfo);
       }
       if (_unknownFields != null) {
@@ -217,6 +241,9 @@ namespace Protocol {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Health != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Health);
       }
       if (posInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PosInfo);
@@ -238,6 +265,9 @@ namespace Protocol {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.Health != 0) {
+        Health = other.Health;
       }
       if (other.posInfo_ != null) {
         if (posInfo_ == null) {
@@ -268,7 +298,11 @@ namespace Protocol {
             Name = input.ReadString();
             break;
           }
-          case 26: {
+          case 24: {
+            Health = input.ReadUInt32();
+            break;
+          }
+          case 34: {
             if (posInfo_ == null) {
               PosInfo = new global::Protocol.PositionInfo();
             }
@@ -298,7 +332,11 @@ namespace Protocol {
             Name = input.ReadString();
             break;
           }
-          case 26: {
+          case 24: {
+            Health = input.ReadUInt32();
+            break;
+          }
+          case 34: {
             if (posInfo_ == null) {
               PosInfo = new global::Protocol.PositionInfo();
             }
