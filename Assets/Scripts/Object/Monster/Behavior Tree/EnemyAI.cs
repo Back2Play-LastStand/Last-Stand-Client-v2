@@ -7,6 +7,9 @@ public class EnemyAI : Monster
     public int detectiveRange;
     public int attackRange;
 
+    public float attackCooldown = 1.5f;
+    private float lastAttackTime = -999f;
+
     SelectorNode rootNode;
     SequenceNode attackSequence;
     SequenceNode detectiveSequence;
@@ -51,8 +54,11 @@ public class EnemyAI : Monster
         if (target.GetComponent<Player>().Health <= 0)
             return INode.STATE.FAILURE;
 
-        Debug.Log("공격중");
+        if (Time.time < lastAttackTime + attackCooldown)
+            return INode.STATE.RUNNING;
 
+        Debug.Log("공격중");
+        // Add Attack Animation
         Debug.Log($"Attacker: {Id}");
         Protocol.REQ_ATTACK_OBJECT attack = new()
         {
@@ -61,6 +67,8 @@ public class EnemyAI : Monster
             Damage = Amount
         };
         Managers.Network.Send(attack, (ushort)PacketId.PKT_REQ_ATTACK_OBJECT);
+
+        lastAttackTime = Time.time;
 
         return INode.STATE.RUNNING;
     }
