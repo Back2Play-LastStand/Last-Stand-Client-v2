@@ -29,6 +29,7 @@ public class Managers : MonoBehaviour
     void Start()
     {
         Init();
+        instance._ui.Init();
     }
     void Update()
     {

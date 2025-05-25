@@ -9,6 +9,13 @@ public class UIManager
     Stack<UI_Popup> m_popupStack = new();
     UI_Scene m_sceneUI = null;
 
+    public UI_Interface m_Interface;
+
+    public void Init()
+    {
+        m_Interface = ShowSceneUI<UI_Interface>();
+    }
+
     public GameObject Root
     {
         get

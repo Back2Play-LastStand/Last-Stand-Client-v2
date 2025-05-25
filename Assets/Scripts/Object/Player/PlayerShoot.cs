@@ -28,6 +28,8 @@ public class PlayerShoot : MonoBehaviour, IPlayerAttack
             Instantiate(m_bulletPrefab, m_firingPos.position, m_firingPos.rotation);
             m_lastFiringTime = Time.time;
             m_curAmmo--;
+
+            Managers.UI.m_Interface.SetRemainAmmoText(m_curAmmo, m_maxAmmo);
         }
         else if (m_curAmmo <= 0)
         {
@@ -53,5 +55,7 @@ public class PlayerShoot : MonoBehaviour, IPlayerAttack
             m_curAmmo += m_maxAmmo;
             m_maxAmmo = 0;
         }
+
+        Managers.UI.m_Interface.SetRemainAmmoText(m_curAmmo, m_maxAmmo);
     }
 }
