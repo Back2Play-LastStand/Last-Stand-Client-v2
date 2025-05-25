@@ -11,6 +11,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     private bool m_mouseClick;
     public bool MouseClick => m_mouseClick;
 
+    private bool m_reloadButton;
+    public bool ReloadButton => m_reloadButton;
+
     public void OnMove(InputValue value)
     {
         m_inputVec = value.Get<Vector2>();
@@ -19,5 +22,10 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public void OnFire(InputValue value)
     {
         m_mouseClick = value.isPressed;
+    }
+
+    public void OnReload(InputValue value)
+    {
+        m_reloadButton = value.isPressed;
     }
 }

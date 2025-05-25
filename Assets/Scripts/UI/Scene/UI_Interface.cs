@@ -63,8 +63,8 @@ public class UI_Interface : UI_Scene
         }
     }
 
-    public void SetRemainAmmoText(int ammo)
+    public void SetRemainAmmoText(int curAmmo, int maxAmmo)
     {
-        GetText((int)Texts.AmmoText).GetComponent<Text>().text = ammo.ToString();
+        GetText((int)Texts.AmmoText).text = $"{curAmmo}/{maxAmmo}";
     }
 }

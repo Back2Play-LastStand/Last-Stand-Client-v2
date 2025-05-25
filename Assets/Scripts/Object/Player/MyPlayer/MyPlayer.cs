@@ -13,7 +13,6 @@ public class MyPlayer : Player
         m_playerInput = GetComponent<PlayerInput>();
 
         // UI
-        Managers.UI.ShowSceneUI<UI_Interface>();
         Managers.Resource.Instantiate("FollowPlayerCamera");
     }
 
@@ -26,6 +25,8 @@ public class MyPlayer : Player
 
         if (m_playerInput.MouseClick)
             UpdateAttack();
+        if (m_playerInput.ReloadButton)
+            m_playerShoot.Reload();
     }
 
     MoveDir GetMoveDir(Vector2 moveVec)
