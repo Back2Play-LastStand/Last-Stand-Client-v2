@@ -25,6 +25,8 @@ public class MyPlayer : Player
 
         if (m_playerInput.MouseClick)
             UpdateAttack();
+        if (m_playerInput.ReloadButton)
+            m_playerShoot.Reload();
     }
 
     MoveDir GetMoveDir(Vector2 moveVec)
