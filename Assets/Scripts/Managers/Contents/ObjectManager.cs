@@ -7,7 +7,6 @@ public class ObjectManager
 {
     public MyPlayer MyPlayer { get; set; }
     Dictionary<ulong, GameObject> _objects = new Dictionary<ulong, GameObject>();
-    Dictionary<ulong, GameObject> _monsters = new Dictionary<ulong, GameObject>();
 
     public void Add(ObjectInfo info, bool myPlayer = false)
     {
@@ -38,7 +37,7 @@ public class ObjectManager
     {
         GameObject go = Managers.Resource.Instantiate("Monster");
         go.name = info.Name;
-        _monsters.Add(info.ObjectId, go);
+        _objects.Add(info.ObjectId, go);
 
         Monster monster = go.GetComponent<Monster>();
         monster.Id = info.ObjectId;
@@ -72,12 +71,6 @@ public class ObjectManager
     {
         GameObject go = null;
         _objects.TryGetValue(id, out go);
-        return go;
-    }
-    public GameObject FindByMonsterId(ulong id)
-    {
-        GameObject go = null;
-        _monsters.TryGetValue(id, out go);
         return go;
     }
 }

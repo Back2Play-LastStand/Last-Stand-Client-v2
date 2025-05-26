@@ -87,15 +87,14 @@ public class PacketHandler
 
         Debug.Log("ResAttackObjectHandler");
 
-        GameObject attacker = Managers.Object.FindByMonsterId(attackPacket.Attacker);
-        GameObject go = Managers.Object.FindById(attackPacket.ObjectId);
-        if (go == null) return;
-        Player player = go.GetComponent<Player>();
-        if (player == null) return;
-        Monster monster = attacker.GetComponent<Monster>();
-        if (monster == null) return;
+        GameObject attackerGO = Managers.Object.FindById(attackPacket.Attacker);
+        GameObject targetGO = Managers.Object.FindById(attackPacket.ObjectId);
+        if (attackerGO == null || targetGO == null) return;
 
-        monster.AttackPlayer(player);
-        Debug.Log($"remain HP: {player.Health}");
+        Creature attacker = attackerGO.GetComponent<Creature>();
+        Creature target = targetGO.GetComponent<Creature>();
+        if(attacker == null || target == null) return;
+
+        target.OnDamaged(attacker);
     }
 }

@@ -19,9 +19,4 @@ public class Monster : Creature
                 _lastDir = value;
         }
     }
-
-    public void AttackPlayer(Player player)
-    {
-        player.GetDamage(this);
-    }
 }
