@@ -21,4 +21,21 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(Vector3.forward * m_speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Monster monster = other.GetComponent<Monster>();
+        if(monster != null)
+        {
+            Protocol.REQ_ATTACK_OBJECT attack = new()
+            {
+                Attacker = Managers.Object.MyPlayer.Id,
+                ObjectId = monster.Id,
+                Damage = Managers.Object.MyPlayer.Amount
+            };
+
+            Managers.Network.Send(attack, (ushort)PacketId.PKT_REQ_ATTACK_OBJECT);
+            Destroy(gameObject);
+        }
+    }
 }

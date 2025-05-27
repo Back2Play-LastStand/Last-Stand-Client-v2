@@ -40,4 +40,18 @@ public class Creature : HealthComponent, IDamage
     }
 
     protected Vector3 _destPos;
+
+    public void OnDamaged(Creature creature)
+    {
+        GetDamage(creature);
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        Debug.Log($"{name} is dead");
+        Destroy(gameObject);
+    }
 }
