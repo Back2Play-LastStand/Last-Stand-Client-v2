@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour, IDamageReceiver
 {
-    public uint startHealth = 100;
+    public uint maxHealth = 100;
     [field: SerializeField]
     public uint Health
     {
@@ -13,7 +13,7 @@ public class HealthComponent : MonoBehaviour, IDamageReceiver
 
     protected virtual void Start()
     {
-        Health = startHealth;
+        Health = maxHealth;
     }
 
     public void GetDamage(IDamage damage)
