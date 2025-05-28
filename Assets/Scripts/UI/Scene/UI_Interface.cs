@@ -24,11 +24,6 @@ public class UI_Interface : UI_Scene
     Transform m_target;
     Camera m_minimapCamera;
 
-    private void Start()
-    {
-        Init();
-    }
-
     public override void Init()
     {
         base.Init();
