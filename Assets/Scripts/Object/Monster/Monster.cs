@@ -19,4 +19,11 @@ public class Monster : Creature
                 _lastDir = value;
         }
     }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        Managers.UI.MakeWorldSpaceUI<UI_HealthBar>(transform);
+    }
 }
