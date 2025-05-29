@@ -24,11 +24,6 @@ public class UI_Interface : UI_Scene
     Transform m_target;
     Camera m_minimapCamera;
 
-    private void Start()
-    {
-        Init();
-    }
-
     public override void Init()
     {
         base.Init();
@@ -41,12 +36,16 @@ public class UI_Interface : UI_Scene
         GetImage((int)Images.MinimapImage);
         RawImage minimap = Get<RawImage>((int)RawImages.Minimap);
 
-        m_target = Managers.Object.MyPlayer.transform;
         GameObject go = Managers.Resource.Instantiate("MinimapCamera");
         m_minimapCamera = go.GetComponent<Camera>();
         RenderTexture rt = new RenderTexture(256, 256, 16);
         m_minimapCamera.targetTexture = rt;
         minimap.texture = rt;
+    }
+
+    public void SetTarget()
+    {
+        m_target = Managers.Object.MyPlayer.transform;
 
         StartCoroutine(UpdateMinimap());
     }
