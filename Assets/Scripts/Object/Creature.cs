@@ -58,11 +58,8 @@ public class Creature : HealthComponent, IDamage
     public void UpdateHealthBar(Creature creature)
     {
         if (m_healthBar == null)
-        {
             return;
-        }
         float ratio = creature.Health / (float)creature.maxHealth;
-        Debug.Log(ratio);
         m_healthBar.SetHealthRatio(ratio);
     }
     public void OnDamaged(Creature creature)

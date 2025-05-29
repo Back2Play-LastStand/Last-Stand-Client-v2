@@ -20,6 +20,7 @@ public class ObjectManager
             MyPlayer.Id = info.ObjectId;
             MyPlayer.SetHealth(info.Health);
             MyPlayer.PosInfo = info.PosInfo;
+            MyPlayer.UpdateHealthBar(MyPlayer);
         }
         else
         {
@@ -31,6 +32,7 @@ public class ObjectManager
             player.Id = info.ObjectId;
             player.SetHealth(info.Health);
             player.PosInfo = info.PosInfo;
+            player.UpdateHealthBar(player);
         }
     }
     public void AddMonster(ObjectInfo info)
@@ -43,6 +45,7 @@ public class ObjectManager
         monster.Id = info.ObjectId;
         monster.SetHealth(info.Health);
         monster.PosInfo = info.PosInfo;
+        monster.UpdateHealthBar(monster);
     }
     public void Add(ulong id, GameObject go)
     {
