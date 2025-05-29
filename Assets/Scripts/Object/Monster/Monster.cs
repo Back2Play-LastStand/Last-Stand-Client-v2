@@ -23,7 +23,5 @@ public class Monster : Creature
     protected override void Start()
     {
         base.Start();
-
-        Managers.UI.MakeWorldSpaceUI<UI_HealthBar>(transform);
     }
 }

@@ -2,6 +2,7 @@ using Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Google.Protobuf.Compiler.CodeGeneratorResponse.Types;
 
 public class Creature : HealthComponent, IDamage
 {
@@ -40,10 +41,31 @@ public class Creature : HealthComponent, IDamage
     }
 
     protected Vector3 _destPos;
+    private UI_HealthBar m_healthBar;
 
+    protected override void Start()
+    {
+        base.Start();
+
+        Init();
+    }
+
+    protected virtual void Init()
+    {
+        m_healthBar = Managers.UI.MakeWorldSpaceUI<UI_HealthBar>(transform);
+    }
+
+    public void UpdateHealthBar(Creature creature)
+    {
+        if (m_healthBar == null)
+            return;
+        float ratio = creature.Health / (float)creature.maxHealth;
+        m_healthBar.SetHealthRatio(ratio);
+    }
     public void OnDamaged(Creature creature)
     {
         GetDamage(creature);
+        UpdateHealthBar(creature);
         if (Health <= 0)
         {
             Die();
