@@ -32,6 +32,8 @@ public class Player : Creature
 
     protected override void Init()
     {
+        base.Init();
+
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerShoot = GetComponent<PlayerShoot>();
         _destPos = transform.position;
