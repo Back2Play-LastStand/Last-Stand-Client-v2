@@ -41,6 +41,18 @@ public class Creature : HealthComponent, IDamage
 
     protected Vector3 _destPos;
 
+    protected override void Start()
+    {
+        base.Start();
+
+        Init();
+    }
+
+    protected virtual void Init()
+    {
+        Managers.UI.MakeWorldSpaceUI<UI_HealthBar>(transform);
+    }
+
     public void OnDamaged(Creature creature)
     {
         GetDamage(creature);

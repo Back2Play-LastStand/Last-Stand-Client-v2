@@ -30,12 +30,11 @@ public class Player : Creature
         Init();
     }
 
-    protected virtual void Init()
+    protected override void Init()
     {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerShoot = GetComponent<PlayerShoot>();
         _destPos = transform.position;
-        Managers.UI.MakeWorldSpaceUI<UI_HealthBar>(transform);
     }
 
     protected virtual void UpdateMovement()
