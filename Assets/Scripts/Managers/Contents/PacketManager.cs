@@ -54,6 +54,8 @@ public class PacketManager : MonoBehaviour
         _handler.Add((ushort)PacketId.PKT_RES_DESPAWN, PacketHandler.ResDespawnHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_CHANGE_HP, MakePacket<Protocol.RES_CHANGE_HP>);
         _handler.Add((ushort)PacketId.PKT_RES_CHANGE_HP, PacketHandler.ResChangeHpHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_DIE, MakePacket<Protocol.RES_DIE>);
+        _handler.Add((ushort)PacketId.PKT_RES_DIE, PacketHandler.ResDieHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_MOVE, MakePacket<Protocol.RES_MOVE>);
         _handler.Add((ushort)PacketId.PKT_RES_MOVE, PacketHandler.ResMoveHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_SPAWN_MONSTER, MakePacket<Protocol.RES_SPAWN_MONSTER>);

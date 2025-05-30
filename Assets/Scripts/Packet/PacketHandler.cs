@@ -62,6 +62,17 @@ public class PacketHandler
         creature.SetHealth(changePacket.Hp);
         creature.UpdateHealthBar(creature);
     }
+    public static void ResDieHandler(PacketSession session, IMessage packet)
+    {
+        RES_DIE diePacket = packet as RES_DIE;
+
+        GameObject go = Managers.Object.FindById(diePacket.ObjectId);
+        if (go == null) return;
+        Creature creature = go.GetComponent<Creature>();
+        if (creature == null) return;
+
+        creature.Die();
+    }
     public static void ResMoveHandler(PacketSession session, IMessage packet)
     {
         RES_MOVE movePacket = packet as RES_MOVE;
