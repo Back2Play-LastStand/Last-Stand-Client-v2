@@ -35,16 +35,17 @@ namespace Protocol {
             "ZWN0SW5mbxIMCgRtaW5lGAIgASgIIjYKDVJFU19TUEFXTl9BTEwSJQoHcGxh",
             "eWVycxgBIAMoCzIULlByb3RvY29sLk9iamVjdEluZm8iGgoLUkVTX0RFU1BB",
             "V04SCwoDaWRzGAEgAygEIi0KDVJFU19DSEFOR0VfSFASEAoIb2JqZWN0SWQY",
-            "ASABKAQSCgoCaHAYAiABKA0iGwoHUkVTX0RJRRIQCghvYmplY3RJZBgBIAEo",
-            "BCIwCghSRVFfTU9WRRIkCgRpbmZvGAEgASgLMhYuUHJvdG9jb2wuUG9zaXRp",
-            "b25JbmZvIjAKCFJFU19NT1ZFEiQKBnBsYXllchgBIAEoCzIULlByb3RvY29s",
-            "Lk9iamVjdEluZm8iOwoRUkVTX1NQQVdOX01PTlNURVISJgoIbW9uc3RlcnMY",
-            "ASADKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZvIjkKEFJFU19NT1ZFX01PTlNU",
-            "RVISJQoHbW9uc3RlchgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8iRwoR",
-            "UkVRX0FUVEFDS19PQkpFQ1QSEAoIYXR0YWNrZXIYASABKAQSEAoIb2JqZWN0",
-            "SWQYAiABKAQSDgoGZGFtYWdlGAMgASgNIlkKEVJFU19BVFRBQ0tfT0JKRUNU",
-            "EhAKCGF0dGFja2VyGAEgASgEEhAKCG9iamVjdElkGAIgASgEEg4KBmRhbWFn",
-            "ZRgDIAEoDRIQCghyZW1haW5IcBgEIAEoDWIGcHJvdG8z"));
+            "ASABKAQSCgoCaHAYAiABKA0iLQoHUkVTX0RJRRIQCghvYmplY3RJZBgBIAEo",
+            "BBIQCghhdHRhY2tlchgCIAEoBCIwCghSRVFfTU9WRRIkCgRpbmZvGAEgASgL",
+            "MhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIjAKCFJFU19NT1ZFEiQKBnBsYXll",
+            "chgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8iOwoRUkVTX1NQQVdOX01P",
+            "TlNURVISJgoIbW9uc3RlcnMYASADKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZv",
+            "IjkKEFJFU19NT1ZFX01PTlNURVISJQoHbW9uc3RlchgBIAEoCzIULlByb3Rv",
+            "Y29sLk9iamVjdEluZm8iRwoRUkVRX0FUVEFDS19PQkpFQ1QSEAoIYXR0YWNr",
+            "ZXIYASABKAQSEAoIb2JqZWN0SWQYAiABKAQSDgoGZGFtYWdlGAMgASgNIlkK",
+            "EVJFU19BVFRBQ0tfT0JKRUNUEhAKCGF0dGFja2VyGAEgASgEEhAKCG9iamVj",
+            "dElkGAIgASgEEg4KBmRhbWFnZRgDIAEoDRIQCghyZW1haW5IcBgEIAEoDWIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,7 +59,7 @@ namespace Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_SPAWN_ALL), global::Protocol.RES_SPAWN_ALL.Parser, new[]{ "Players" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_DESPAWN), global::Protocol.RES_DESPAWN.Parser, new[]{ "Ids" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_CHANGE_HP), global::Protocol.RES_CHANGE_HP.Parser, new[]{ "ObjectId", "Hp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_DIE), global::Protocol.RES_DIE.Parser, new[]{ "ObjectId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_DIE), global::Protocol.RES_DIE.Parser, new[]{ "ObjectId", "Attacker" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_MOVE), global::Protocol.REQ_MOVE.Parser, new[]{ "Info" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_MOVE), global::Protocol.RES_MOVE.Parser, new[]{ "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_SPAWN_MONSTER), global::Protocol.RES_SPAWN_MONSTER.Parser, new[]{ "Monsters" }, null, null, null, null),
@@ -2123,6 +2124,7 @@ namespace Protocol {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RES_DIE(RES_DIE other) : this() {
       objectId_ = other.objectId_;
+      attacker_ = other.attacker_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2144,6 +2146,18 @@ namespace Protocol {
       }
     }
 
+    /// <summary>Field number for the "attacker" field.</summary>
+    public const int AttackerFieldNumber = 2;
+    private ulong attacker_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Attacker {
+      get { return attacker_; }
+      set {
+        attacker_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2160,6 +2174,7 @@ namespace Protocol {
         return true;
       }
       if (ObjectId != other.ObjectId) return false;
+      if (Attacker != other.Attacker) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2168,6 +2183,7 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (ObjectId != 0UL) hash ^= ObjectId.GetHashCode();
+      if (Attacker != 0UL) hash ^= Attacker.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2190,6 +2206,10 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(ObjectId);
       }
+      if (Attacker != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(Attacker);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2204,6 +2224,10 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(ObjectId);
       }
+      if (Attacker != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(Attacker);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2216,6 +2240,9 @@ namespace Protocol {
       int size = 0;
       if (ObjectId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ObjectId);
+      }
+      if (Attacker != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Attacker);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2231,6 +2258,9 @@ namespace Protocol {
       }
       if (other.ObjectId != 0UL) {
         ObjectId = other.ObjectId;
+      }
+      if (other.Attacker != 0UL) {
+        Attacker = other.Attacker;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2251,6 +2281,10 @@ namespace Protocol {
             ObjectId = input.ReadUInt64();
             break;
           }
+          case 16: {
+            Attacker = input.ReadUInt64();
+            break;
+          }
         }
       }
     #endif
@@ -2268,6 +2302,10 @@ namespace Protocol {
             break;
           case 8: {
             ObjectId = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            Attacker = input.ReadUInt64();
             break;
           }
         }
