@@ -50,6 +50,18 @@ public class PacketHandler
 
         Debug.Log("ResDespawnHandler");
     }
+    public static void ResChangeHpHandler(PacketSession session, IMessage packet)
+    {
+        RES_CHANGE_HP changePacket = packet as RES_CHANGE_HP;
+
+        GameObject go = Managers.Object.FindById(changePacket.ObjectId);
+        if (go == null) return;
+        Creature creature = go.GetComponent<Creature>();
+        if (creature == null) return;
+
+        creature.SetHealth(changePacket.Hp);
+        creature.UpdateHealthBar(creature);
+    }
     public static void ResMoveHandler(PacketSession session, IMessage packet)
     {
         RES_MOVE movePacket = packet as RES_MOVE;
@@ -93,7 +105,7 @@ public class PacketHandler
 
         Creature attacker = attackerGO.GetComponent<Creature>();
         Creature target = targetGO.GetComponent<Creature>();
-        if(attacker == null || target == null) return;
+        if (attacker == null || target == null) return;
 
         target.OnDamaged(attacker);
     }
