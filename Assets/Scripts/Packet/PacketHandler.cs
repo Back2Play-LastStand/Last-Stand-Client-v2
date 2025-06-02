@@ -19,7 +19,7 @@ public class PacketHandler
     public static void ResLeaveHandler(PacketSession session, IMessage packet)
     {
         RES_LEAVE leavePacket = packet as RES_LEAVE;
-        Managers.Object.Remove(leavePacket.Object.ObjectId);
+        Managers.Object.Remove(leavePacket.ObjectId);
     }
     public static void ResEnterRoomHandler(PacketSession session, IMessage packet)
     {
