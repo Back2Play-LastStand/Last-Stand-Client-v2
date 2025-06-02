@@ -118,6 +118,7 @@ public class PacketHandler
         Creature target = targetGO.GetComponent<Creature>();
         if (attacker == null || target == null) return;
 
+        target.SetHealth(attackPacket.RemainHp);
         target.OnDamaged(attacker);
     }
 }
