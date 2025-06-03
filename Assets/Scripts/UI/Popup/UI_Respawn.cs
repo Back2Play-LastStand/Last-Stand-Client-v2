@@ -26,5 +26,7 @@ public class UI_Respawn : UI_Popup
     public void RespawnPlayer()
     {
         Debug.Log("RespawnPlayer");
+        REQ_RESPAWN respawn = new();
+        Managers.Network.Send(respawn, (ushort)PacketId.PKT_REQ_RESPAWN);
     }
 }

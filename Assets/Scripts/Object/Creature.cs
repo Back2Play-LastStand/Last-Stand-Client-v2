@@ -70,6 +70,8 @@ public class Creature : HealthComponent, IDamage
     public void Die()
     {
         Debug.Log($"{name} is dead");
+        Managers.Object.Remove(Id);
+        Managers.UI.ShowPopupUI<UI_Respawn>();
         Destroy(gameObject);
     }
 }

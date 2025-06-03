@@ -21,6 +21,8 @@ public class ObjectManager
             MyPlayer.SetHealth(info.Health);
             MyPlayer.PosInfo = info.PosInfo;
             MyPlayer.UpdateHealthBar(MyPlayer);
+            Managers.UI.m_Interface.SetTarget();
+            Managers.UI.CloseAllPopupUI();
         }
         else
         {
