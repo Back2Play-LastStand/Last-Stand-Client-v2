@@ -64,16 +64,14 @@ public class Creature : HealthComponent, IDamage
     }
     public void OnDamaged(Creature creature)
     {
-        GetDamage(creature);
+        // damaged effect
         UpdateHealthBar(creature);
-        if (Health <= 0)
-        {
-            Die();
-        }
     }
     public void Die()
     {
         Debug.Log($"{name} is dead");
+        Managers.Object.Remove(Id);
+        Managers.UI.ShowPopupUI<UI_Respawn>();
         Destroy(gameObject);
     }
 }

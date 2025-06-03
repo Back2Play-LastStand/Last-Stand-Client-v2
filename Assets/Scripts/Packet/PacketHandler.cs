@@ -19,7 +19,7 @@ public class PacketHandler
     public static void ResLeaveHandler(PacketSession session, IMessage packet)
     {
         RES_LEAVE leavePacket = packet as RES_LEAVE;
-        Managers.Object.Remove(leavePacket.Object.ObjectId);
+        Managers.Object.Remove(leavePacket.ObjectId);
     }
     public static void ResEnterRoomHandler(PacketSession session, IMessage packet)
     {
@@ -49,6 +49,29 @@ public class PacketHandler
         RES_DESPAWN despawnPacket = packet as RES_DESPAWN;
 
         Debug.Log("ResDespawnHandler");
+    }
+    public static void ResChangeHpHandler(PacketSession session, IMessage packet)
+    {
+        RES_CHANGE_HP changePacket = packet as RES_CHANGE_HP;
+
+        GameObject go = Managers.Object.FindById(changePacket.ObjectId);
+        if (go == null) return;
+        Creature creature = go.GetComponent<Creature>();
+        if (creature == null) return;
+
+        creature.SetHealth(changePacket.Hp);
+        creature.UpdateHealthBar(creature);
+    }
+    public static void ResDieHandler(PacketSession session, IMessage packet)
+    {
+        RES_DIE diePacket = packet as RES_DIE;
+
+        GameObject go = Managers.Object.FindById(diePacket.ObjectId);
+        if (go == null) return;
+        Creature creature = go.GetComponent<Creature>();
+        if (creature == null) return;
+
+        creature.Die();
     }
     public static void ResMoveHandler(PacketSession session, IMessage packet)
     {
@@ -93,8 +116,9 @@ public class PacketHandler
 
         Creature attacker = attackerGO.GetComponent<Creature>();
         Creature target = targetGO.GetComponent<Creature>();
-        if(attacker == null || target == null) return;
+        if (attacker == null || target == null) return;
 
+        target.SetHealth(attackPacket.RemainHp);
         target.OnDamaged(attacker);
     }
 }

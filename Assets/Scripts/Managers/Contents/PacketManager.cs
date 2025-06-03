@@ -13,15 +13,18 @@ public enum PacketId : ushort
     PKT_RES_ENTER_ROOM = 1003,
     PKT_REQ_LEAVE = 1004,
     PKT_RES_LEAVE = 1005,
-    PKT_RES_SPAWN = 1006,
-    PKT_RES_SPAWN_ALL = 1007,
-    PKT_RES_DESPAWN = 1008,
-    PKT_REQ_MOVE = 1009,
-    PKT_RES_MOVE = 1010,
-    PKT_RES_SPAWN_MONSTER = 1011,
-    PKT_RES_MOVE_MONSTER = 1012,
-    PKT_REQ_ATTACK_OBJECT = 1013,
-    PKT_RES_ATTACK_OBJECT = 1014,
+    PKT_REQ_RESPAWN = 1006,
+    PKT_RES_SPAWN = 1007,
+    PKT_RES_SPAWN_ALL = 1008,
+    PKT_RES_DESPAWN = 1009,
+    PKT_RES_CHANGE_HP = 1010,
+    PKT_RES_DIE = 1011,
+    PKT_REQ_MOVE = 1012,
+    PKT_RES_MOVE = 1013,
+    PKT_RES_SPAWN_MONSTER = 1014,
+    PKT_RES_MOVE_MONSTER = 1015,
+    PKT_REQ_ATTACK_OBJECT = 1016,
+    PKT_RES_ATTACK_OBJECT = 1017,
 }
 
 public class PacketManager : MonoBehaviour
@@ -50,6 +53,10 @@ public class PacketManager : MonoBehaviour
         _handler.Add((ushort)PacketId.PKT_RES_SPAWN_ALL, PacketHandler.ResSpawnAllHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_DESPAWN, MakePacket<Protocol.RES_DESPAWN>);
         _handler.Add((ushort)PacketId.PKT_RES_DESPAWN, PacketHandler.ResDespawnHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_CHANGE_HP, MakePacket<Protocol.RES_CHANGE_HP>);
+        _handler.Add((ushort)PacketId.PKT_RES_CHANGE_HP, PacketHandler.ResChangeHpHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_DIE, MakePacket<Protocol.RES_DIE>);
+        _handler.Add((ushort)PacketId.PKT_RES_DIE, PacketHandler.ResDieHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_MOVE, MakePacket<Protocol.RES_MOVE>);
         _handler.Add((ushort)PacketId.PKT_RES_MOVE, PacketHandler.ResMoveHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_SPAWN_MONSTER, MakePacket<Protocol.RES_SPAWN_MONSTER>);
