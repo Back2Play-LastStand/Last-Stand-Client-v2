@@ -13,6 +13,10 @@ public class MyPlayer : Player
         m_playerInput = GetComponent<PlayerInput>();
 
         // UI
+        if (Managers.UI.m_Interface == null)
+        {
+            Managers.UI.m_Interface = Managers.UI.ShowSceneUI<UI_Interface>();
+        }
         Managers.UI.m_Interface.SetTarget();
         Managers.Resource.Instantiate("FollowPlayerCamera");
     }
