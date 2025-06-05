@@ -39,19 +39,20 @@ public class UI_Login : UI_Scene
     {
         string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
-        string uri = "http://localhost:3333/login";
+        string url = "http://localhost:3333/login";
 
-        var res = PostLoginAsync(uri, account, password);
+        var res = PostLoginAsync(url, account, password);
+    }
     }
     
     static readonly HttpClient client = new HttpClient();
 
-    public async Task<string> PostLoginAsync(string uri, string account, string password)
+    public async Task<string> PostLoginAsync(string url, string account, string password)
     {
         string body = $"{account}&{password}";
         var content = new StringContent(body, Encoding.UTF8);
 
-        HttpResponseMessage response = await client.PostAsync(uri, content);
+        HttpResponseMessage response = await client.PostAsync(url, content);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsStringAsync();
