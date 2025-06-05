@@ -13,7 +13,6 @@ public class UIManager
 
     public void Init()
     {
-        m_Interface = ShowSceneUI<UI_Interface>();
     }
 
     public GameObject Root
