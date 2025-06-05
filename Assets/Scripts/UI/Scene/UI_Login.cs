@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class UI_Login : UI_Scene
+{
+    enum GameObjects
+    {
+        InputId,
+        IdPlaceholder,
+        InputPassword,
+        PasswordPlaceholder,
+        LoginButton,
+    }
+
+    enum Texts
+    {
+        IdText,
+        PasswordText,
+        LoginText
+    }
+
+    public override void Init()
+    {
+        base.Init();
+
+        Bind<GameObject>(typeof(GameObjects));
+        Bind<Text>(typeof(Texts));
+
+        GetObject((int)GameObjects.LoginButton).AddUIEvent((PointerEventData) => { OnClickLoginButton(PointerEventData); });
+    }
+
+    public void OnClickLoginButton(PointerEventData evt)
+    {
+        string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
+        string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
+        string uri = "http://localhost:3333/login";
+
+        var res = PostLoginAsync(uri, account, password);
+    }
+    
+    static readonly HttpClient client = new HttpClient();
+
+    public async Task<string> PostLoginAsync(string uri, string account, string password)
+    {
+        string body = $"{account}&{password}";
+        var content = new StringContent(body, Encoding.UTF8);
+
+        HttpResponseMessage response = await client.PostAsync(uri, content);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadAsStringAsync();
+    }
+}
