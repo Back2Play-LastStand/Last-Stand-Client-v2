@@ -43,7 +43,7 @@ public class UI_Login : UI_Scene
     {
         string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
-        string url = "http://localhost:3333/login";
+        string url = "http://localhost:6666/login";
 
         var res = await PostLoginAsync(url, account, password);
 
@@ -57,7 +57,7 @@ public class UI_Login : UI_Scene
     {
         string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
-        string url = "http://localhost:3333/join";
+        string url = "http://localhost:6666/join";
 
         var res = PostJoinAsync(url, account, password);
     }
