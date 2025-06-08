@@ -9,6 +9,7 @@ public class GameScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Game;
+        Managers.Network.CoonectServer();
     }
 
     public override void Clear()
