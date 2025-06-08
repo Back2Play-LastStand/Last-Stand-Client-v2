@@ -10,14 +10,12 @@ public class LoginScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Login;
+        Managers.UI.ShowSceneUI<UI_Login>();
     }
 
-    private void Update()
+    public void TurnGameScene()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            Managers.Scene.LoadScene(Define.Scene.Game);
-        }
+        Managers.Scene.LoadScene(Define.Scene.Game);
     }
 
     public override void Clear()

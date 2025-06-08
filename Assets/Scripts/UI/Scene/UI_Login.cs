@@ -39,13 +39,19 @@ public class UI_Login : UI_Scene
         GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { OnClickJoinButton(PointerEventData); });
     }
 
-    public void OnClickLoginButton(PointerEventData evt)
+    public async Task OnClickLoginButton(PointerEventData evt)
     {
         string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
         string url = "http://localhost:3333/login";
 
-        var res = PostLoginAsync(url, account, password);
+        var res = await PostLoginAsync(url, account, password);
+
+        if(res == "success")
+        {
+            var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
+            login.TurnGameScene();
+        }
     }
     public void OnClickJoinButton(PointerEventData evt)
     {
