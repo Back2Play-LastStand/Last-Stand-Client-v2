@@ -67,11 +67,10 @@ public class Creature : HealthComponent, IDamage
         // damaged effect
         UpdateHealthBar(creature);
     }
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log($"{name} is dead");
         Managers.Object.Remove(Id);
-        Managers.UI.ShowPopupUI<UI_Respawn>();
         Destroy(gameObject);
     }
 }
