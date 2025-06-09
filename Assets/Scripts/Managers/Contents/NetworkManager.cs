@@ -28,7 +28,10 @@ public class NetworkManager : MonoBehaviour
         }
 
         _ipEndPoint = new IPEndPoint(_ipAddr, port);
+    }
 
+    public void CoonectServer()
+    {
         _connector.Connect(_ipEndPoint,
             () => { return _session; });
     }
