@@ -9,6 +9,13 @@ public class LobbyScene : BaseScene
         base.Init();
 
         Managers.UI.ShowSceneUI<UI_Lobby>();
+        Managers.Network.CoonectServer();
+
+        Protocol.REQ_ENTER pkt = new()
+        {
+            Name = "Name",
+        };
+        Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
     }
 
     public void TurnGameScene()

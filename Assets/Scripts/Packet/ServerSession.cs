@@ -11,11 +11,6 @@ namespace ServerCore
 {
     public class ServerSession : PacketSession
     {
-        private string[] nameList = {
-        "Axel", "Blaze", "Caden", "Derek", "Elias", "Finn", "Gage", "Hunter", "Ivy", "Jade",
-        "Kai", "Liam", "Maya", "Nina", "Oscar", "Piper", "Quinn", "Ryder", "Sage", "Tess"
-        };
-
         public override void OnConnected(EndPoint endPoint)
         {
             Debug.Log($"OnConnected : {endPoint}");
@@ -24,12 +19,6 @@ namespace ServerCore
             {
                 PacketQueue.Instance.Push(i, m);
             };
-
-            Protocol.REQ_ENTER pkt = new();
-            System.Random random = new System.Random();
-            int index = random.Next(nameList.Length);
-            pkt.Name = nameList[index];
-            Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
         }
 
         public void Send(IMessage packet, ushort id)
