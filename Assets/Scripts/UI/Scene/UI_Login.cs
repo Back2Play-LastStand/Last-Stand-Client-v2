@@ -50,7 +50,7 @@ public class UI_Login : UI_Scene
         if(res == "success")
         {
             var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
-            login.TurnGameScene();
+            login.TurnScene();
         }
     }
     public void OnClickJoinButton(PointerEventData evt)

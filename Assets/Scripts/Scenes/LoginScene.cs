@@ -13,9 +13,9 @@ public class LoginScene : BaseScene
         Managers.UI.ShowSceneUI<UI_Login>();
     }
 
-    public void TurnGameScene()
+    public void TurnScene()
     {
-        Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.Scene.LoadScene(Define.Scene.Lobby);
     }
 
     public override void Clear()
