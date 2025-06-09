@@ -8,7 +8,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
 
-        Managers.UI.ShowSceneUI<UI_Lobby>();
+        Managers.UI.ShowPopupUI<UI_Lobby>();
         Managers.Network.CoonectServer();
 
         Protocol.REQ_ENTER pkt = new()

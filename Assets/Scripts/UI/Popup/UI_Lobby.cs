@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Lobby : UI_Scene
+public class UI_Lobby : UI_Popup
 {
     enum GameObjects
     {

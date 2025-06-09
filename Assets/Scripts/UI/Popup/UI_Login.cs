@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Login : UI_Scene
+public class UI_Login : UI_Popup
 {
     enum GameObjects
     {
