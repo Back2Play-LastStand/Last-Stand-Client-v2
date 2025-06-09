@@ -57,5 +57,8 @@ public class UI_Lobby : UI_Scene
     }
     public void JoinRoom()
     {
+        REQ_ENTER_ROOM enterRoomPacket = new();
+        enterRoomPacket.Name = RoomName;
+        Managers.Network.Send(enterRoomPacket, (ushort)PacketId.PKT_REQ_ENTER_ROOM);
     }
 }
