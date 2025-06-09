@@ -11,10 +11,6 @@ public class PacketHandler
         ServerSession serverSession = session as ServerSession;
 
         Debug.Log("ResEnterHandler");
-
-        REQ_ENTER_ROOM enterRoomPacket = new();
-        enterRoomPacket.Name = "roomname";
-        Managers.Network.Send(enterRoomPacket, (ushort)PacketId.PKT_REQ_ENTER_ROOM);
     }
     public static void ResLeaveHandler(PacketSession session, IMessage packet)
     {
