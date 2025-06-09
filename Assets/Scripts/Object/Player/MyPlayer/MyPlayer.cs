@@ -103,6 +103,13 @@ public class MyPlayer : Player
         m_playerMovement.PlayAnim(animDir);
     }
 
+    public override void Die()
+    {
+        base.Die();
+
+        Managers.UI.ShowPopupUI<UI_Respawn>();
+    }
+
     void OnApplicationQuit()
     {
         Managers.Network.ApplicationQuit();
