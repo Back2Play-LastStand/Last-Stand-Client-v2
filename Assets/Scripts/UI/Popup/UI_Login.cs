@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Login : UI_Popup
@@ -35,53 +31,65 @@ public class UI_Login : UI_Popup
         Bind<GameObject>(typeof(GameObjects));
         Bind<Text>(typeof(Texts));
 
-        GetObject((int)GameObjects.LoginButton).AddUIEvent((PointerEventData) => { OnClickLoginButton(PointerEventData); });
-        GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { OnClickJoinButton(PointerEventData); });
+        var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
+        GetObject((int)GameObjects.LoginButton).AddUIEvent((PointerEventData) => { LoginReq((success, message) => { if (success) login.TurnScene(); }); });
+        GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { });
     }
 
-    public async Task OnClickLoginButton(PointerEventData evt)
+    public void LoginReq(System.Action<bool, string> callback)
     {
-        string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
+        string playerId = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
-        string url = "http://localhost:6666/login";
 
-        var res = await PostLoginAsync(url, account, password);
-
-        if(res == "success")
+        LoginRequest request = new LoginRequest
         {
-            var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
-            login.TurnScene();
-        }
+            playerId = playerId,
+            password = password
+        };
+
+        string json = JsonUtility.ToJson(request);
+
+        StartCoroutine(WebRequestManager.Instance.PostRequest(WebRequestManager.Instance.serverConn.LoginUrl, json,
+            onSuccess: (response) =>
+            {
+                LoginResponse res = JsonUtility.FromJson<LoginResponse>(response);
+
+                if (res == null)
+                {
+                    Debug.LogError("LoginResponse 파싱 실패");
+                    callback(false, "파싱 실패");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(res.sessionId))
+                {
+                    Debug.LogError("세션이 비어있음: " + res.message);
+                    callback(false, res.message);
+                    return;
+                }
+
+                PlayerPrefs.SetString("SESSION_ID", res.sessionId);
+                PlayerPrefs.SetString("USER_ID", res.playerId);
+
+                callback(true, response);
+            },
+            onError: (error) => callback(false, error)
+            ));
     }
-    public void OnClickJoinButton(PointerEventData evt)
-    {
-        string account = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
-        string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
-        string url = "http://localhost:6666/join";
+}
 
-        var res = PostJoinAsync(url, account, password);
-    }
-    
-    static readonly HttpClient client = new HttpClient();
+[System.Serializable]
+public class LoginRequest
+{
+    public string playerId;
+    public string password;
+}
 
-    public async Task<string> PostLoginAsync(string url, string account, string password)
-    {
-        string body = $"{account}&{password}";
-        var content = new StringContent(body, Encoding.UTF8);
-
-        HttpResponseMessage response = await client.PostAsync(url, content);
-        response.EnsureSuccessStatusCode();
-
-        return await response.Content.ReadAsStringAsync();
-    }
-    public async Task<string> PostJoinAsync(string url, string account, string password)
-    {
-        string body = $"{account}&{password}";
-        var content = new StringContent(body, Encoding.UTF8);
-
-        HttpResponseMessage response = await client.PostAsync(url, content);
-        response.EnsureSuccessStatusCode();
-
-        return await response.Content.ReadAsStringAsync();
-    }
+[System.Serializable]
+public class LoginResponse
+{
+    public string playerId;
+    public string sessionId;
+    public bool isNewAccount;
+    public string message;
 }
