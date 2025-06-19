@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32c2aa48b5e51445819eaf29673c05e, type: 3}
   m_Name: ServerConnection
   m_EditorClassIdentifier: 
-  BaseUrl: https://fe5b-2001-2d8-e2ee-3219-11c7-4e8e-7a5d-16d5.ngrok-free.app/http://127.0.0.1:5038/api
+  BaseUrl: ' https://a392-210-218-52-13.ngrok-free.app/api'
   RegisterEndpoint: /auth/register
   LoginEndpoint: /auth/login
