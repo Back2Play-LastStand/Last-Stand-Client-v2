@@ -33,7 +33,7 @@ public class UI_Login : UI_Popup
 
         var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
         GetObject((int)GameObjects.LoginButton).AddUIEvent((PointerEventData) => { LoginReq((success, message) => { if (success) login.TurnScene(); }); });
-        GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { });
+        GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { Managers.UI.ShowPopupUI<UI_Register>(); });
     }
 
     public void LoginReq(System.Action<bool, string> callback)
