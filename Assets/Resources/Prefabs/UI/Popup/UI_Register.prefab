@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 8997258287839442793}
   - component: {fileID: 6707377401585652196}
   m_Layer: 5
-  m_Name: FindText
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
