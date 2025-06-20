@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Login : UI_Popup
@@ -34,6 +35,7 @@ public class UI_Login : UI_Popup
         var login = Managers.Scene.CurrentScene.GetComponent<LoginScene>();
         GetObject((int)GameObjects.LoginButton).AddUIEvent((PointerEventData) => { LoginReq((success, message) => { if (success) login.TurnScene(); }); });
         GetObject((int)GameObjects.JoinButton).AddUIEvent((PointerEventData) => { Managers.UI.ShowPopupUI<UI_Register>(); });
+        GetText((int)Texts.FindText).gameObject.AddUIEvent((PointerEventData) => { Managers.UI.ShowPopupUI<UI_FindId>(); });
     }
 
     public void LoginReq(System.Action<bool, string> callback)
