@@ -34,16 +34,17 @@ public class UI_FindId : UI_Popup
         string email = GetObject((int)GameObjects.InputEmail).GetComponent<InputField>().text;
         string url = WebRequestManager.Instance.serverConn.GetVerifyEmailUrl(email);
 
-        StartCoroutine(WebRequestManager.Instance.GetRequest(
-            url,
-            onSuccess: (response) =>
-            {
-                Debug.Log("인증 이메일 전송 성공: " + response);
-            },
-            onError: (error) =>
-            {
-                Debug.LogError("이메일 전송 실패: " + error);
-            }));
+        StartCoroutine(WebRequestManager.Instance.PostRequest(
+                url,
+                "",
+                onSuccess: (response) =>
+                {
+                    Debug.Log("인증 이메일 전송 성공: " + response);
+                },
+                onError: (error) =>
+                {
+                    Debug.LogError(":x: 이메일 전송 실패: " + error);
+                }));
     }
 
     public void SendVerifyCode()
