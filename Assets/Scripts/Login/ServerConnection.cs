@@ -9,10 +9,13 @@ public class ServerConnection : ScriptableObject
 
     public string RegisterEndpoint = "/auth/register";
     public string LoginEndpoint = "/auth/login";
+    public string VerifyCodeEndpoint = "/verify/send";
 
     public string RegisterUrl => BaseUrl + RegisterEndpoint;
     public string LoginUrl => BaseUrl + LoginEndpoint;
+    public string VerifyCodeUrl => BaseUrl + VerifyCodeEndpoint;
 
+    public string GetVerifyEmailUrl(string email) => $"{BaseUrl}/verify/send/email?email={UnityEngine.Networking.UnityWebRequest.EscapeURL(email)}";
     public string GetTopRankingEndpoint(int count) => $"/ranking/top/{count}";
     public string GetTopRankingUrl(int count) => BaseUrl + GetTopRankingEndpoint(count);
     public string GetPlayerRankingUrl(string playerId) => $"{BaseUrl}/ranking/{playerId}";
