@@ -12,6 +12,7 @@ public class UIManager
     public UI_Interface m_Interface;
 
     public UI_Lobby m_lobby;
+    public UI_InputName m_inputName;
 
     public void Init()
     {
