@@ -17,6 +17,18 @@ public class PacketHandler
         RES_LEAVE leavePacket = packet as RES_LEAVE;
         Managers.Object.Remove(leavePacket.ObjectId);
     }
+    public static void ResEnterGameRoomHandler(PacketSession session, IMessage packet)
+    {
+        RES_ENTER_GAMEROOM enterPacket = packet as RES_ENTER_GAMEROOM;
+
+        Debug.Log("ResEnterGameRoomHandler");
+        var createRoom = Managers.UI.ShowPopupUI<UI_CreateRoom>();
+        createRoom.SetPlayer(enterPacket);
+    }
+    public static void ResLeaveGameRoomHandler(PacketSession session, IMessage packet)
+    {
+        RES_LEAVE_GAMEROOM leavePacket = packet as RES_LEAVE_GAMEROOM;
+    }
     public static void ResEnterRoomHandler(PacketSession session, IMessage packet)
     {
         RES_ENTER_ROOM enterRoomPacket = packet as RES_ENTER_ROOM;
