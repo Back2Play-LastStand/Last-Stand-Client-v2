@@ -10,7 +10,6 @@ public class UIManager
     UI_Scene m_sceneUI = null;
 
     public UI_Interface m_Interface;
-
     public UI_Lobby m_lobby;
 
     public void Init()
