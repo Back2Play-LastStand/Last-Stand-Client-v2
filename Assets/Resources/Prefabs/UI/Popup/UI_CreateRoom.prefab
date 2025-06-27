@@ -500,9 +500,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2493040652646116755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 707e17479e80d064aaa0ec8adef117af, type: 3}
+  m_Script: {fileID: 11500000, guid: 577e652d6d452cf46bd1286da0a5c37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSlots:
+  - {fileID: 1377482064360457500}
+  - {fileID: 1007849367665253036}
+  - {fileID: 8969445799209271670}
+  - {fileID: 1977516224783155494}
 --- !u!1 &2836033702643100200
 GameObject:
   m_ObjectHideFlags: 0
