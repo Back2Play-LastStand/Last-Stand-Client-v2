@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOItemDropTable", menuName = "Item/SOItemDropTable")]
 public class SOItemDropTable : ScriptableObject
 {
-    [SerializeField]
+    [System.Serializable]
     public class Items
     {
         public SOItem item;

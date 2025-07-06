@@ -8,7 +8,7 @@ public class SOItem : ScriptableObject
     public string itemName;
     public int level;
 
-    [SerializeField]
+    [System.Serializable]
     public class STAT
     {
         public string name;
