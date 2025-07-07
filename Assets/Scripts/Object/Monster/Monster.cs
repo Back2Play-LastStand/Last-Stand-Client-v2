@@ -20,8 +20,17 @@ public class Monster : Creature
         }
     }
 
+    public SOItemDropTable soMon;
+
     protected override void Start()
     {
         base.Start();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        soMon.ItemDrop(transform.position);
     }
 }
