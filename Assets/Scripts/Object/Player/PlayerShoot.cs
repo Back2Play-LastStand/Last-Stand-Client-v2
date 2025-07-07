@@ -58,4 +58,10 @@ public class PlayerShoot : MonoBehaviour, IPlayerAttack
 
         Managers.UI.m_Interface.SetRemainAmmoText(m_curAmmo, m_maxAmmo);
     }
+
+    public void AddAmmo(int ammo)
+    {
+        m_maxAmmo += ammo;
+        Managers.UI.m_Interface.SetRemainAmmoText(m_curAmmo, m_maxAmmo);
+    }
 }
