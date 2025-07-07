@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564ef593fd07dc3449f4f29a06d4bac8, type: 3}
   m_Name: IDT_Monster
   m_EditorClassIdentifier: 
+  items:
+  - item: {fileID: 11400000, guid: 5811a104fe57a1c408ac22a782c4f2c5, type: 2}
+    weight: 100
