@@ -13,7 +13,7 @@ public class MapExporter : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask obstacleMask;
 
-    public string outputFileName = "MashMap.txt";
+    public string outputFileName = "MeshMap.txt";
 
     [ContextMenu("Export Walkable Map")]
     public void ExportMap()
