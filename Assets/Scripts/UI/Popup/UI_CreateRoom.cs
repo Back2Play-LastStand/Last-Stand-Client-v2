@@ -35,8 +35,9 @@ public class UI_CreateRoom : UI_Popup
 
     void StartGame()
     {
-        var lobby = Managers.Scene.CurrentScene.GetComponent<LobbyScene>();
-        lobby.TurnGameScene();
+        REQ_ENTER_ROOM enterRoomPacket = new();
+        enterRoomPacket.Name = Managers.UI.m_lobby.RoomName;
+        Managers.Network.Send(enterRoomPacket, (ushort)PacketId.PKT_REQ_ENTER_ROOM);
     }
 
     public void SetPlayer(RES_ENTER_GAMEROOM enter)
