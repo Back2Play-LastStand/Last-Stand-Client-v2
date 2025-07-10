@@ -24,17 +24,20 @@ public class UI_CreateRoom : UI_Popup
         Bind<GameObject>(typeof(GameObjects));
 
         GetObject((int)GameObjects.RoomPanel).GetComponentInChildren<Text>().text = Managers.UI.m_lobby.RoomName;
-        GetObject((int)GameObjects.StartGame).AddUIEvent((PointerEventData) => { StartGame(); });
+        StartGameButton = GetObject((int)GameObjects.StartGame);
+        StartGameButton.AddUIEvent((PointerEventData) => { StartGame(); });
         GetObject((int)GameObjects.ExitRoom).AddUIEvent((PointerEventData) => { ClosePopupUI(); });
     }
 
     [field: SerializeField]
     public GameObject[] PlayerSlots = new GameObject[4];
+    GameObject StartGameButton = null;
 
     void StartGame()
     {
-        var lobby = Managers.Scene.CurrentScene.GetComponent<LobbyScene>();
-        lobby.TurnGameScene();
+        REQ_ENTER_ROOM enterRoomPacket = new();
+        enterRoomPacket.Name = Managers.UI.m_lobby.RoomName;
+        Managers.Network.Send(enterRoomPacket, (ushort)PacketId.PKT_REQ_ENTER_ROOM);
     }
 
     public void SetPlayer(RES_ENTER_GAMEROOM enter)
@@ -47,5 +50,7 @@ public class UI_CreateRoom : UI_Popup
             PlayerSlots[i].SetActive(true);
             PlayerSlots[i].GetComponentInChildren<Text>().text = enter.Players[i].Name;
         }
+
+        StartGameButton.SetActive(enter.IsCreate);
     }
 }

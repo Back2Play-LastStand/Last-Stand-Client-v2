@@ -35,6 +35,8 @@ public class PacketHandler
         ServerSession serverSession = session as ServerSession;
 
         Debug.Log("ResEnterRoomHandler");
+        var lobby = Managers.Scene.CurrentScene.GetComponent<LobbyScene>();
+        lobby.TurnGameScene();
     }
     public static void ResSpawnHandler(PacketSession session, IMessage packet)
     {

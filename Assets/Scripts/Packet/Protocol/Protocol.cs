@@ -28,36 +28,37 @@ namespace Protocol {
             "dC5wcm90byIZCglSRVFfRU5URVISDAoEbmFtZRgBIAEoCSJCCglSRVNfRU5U",
             "RVISJAoGcGxheWVyGAEgASgLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbxIPCgdz",
             "dWNjZXNzGAIgASgIIjQKElJFUV9FTlRFUl9HQU1FUk9PTRIMCgRuYW1lGAEg",
-            "ASgJEhAKCGlzQ3JlYXRlGAMgASgIIlAKElJFU19FTlRFUl9HQU1FUk9PTRIT",
+            "ASgJEhAKCGlzQ3JlYXRlGAMgASgIImIKElJFU19FTlRFUl9HQU1FUk9PTRIT",
             "CgttZW1iZXJDb3VudBgBIAEoDRIlCgdwbGF5ZXJzGAIgAygLMhQuUHJvdG9j",
-            "b2wuT2JqZWN0SW5mbyImChJSRVFfTEVBVkVfR0FNRVJPT00SEAoIb2JqZWN0",
-            "SWQYASABKAQiOAoSUkVTX0xFQVZFX0dBTUVST09NEhAKCHJvb21OYW1lGAEg",
-            "ASgJEhAKCG9iamVjdElkGAIgASgEIh4KDlJFUV9FTlRFUl9ST09NEgwKBG5h",
-            "bWUYASABKAkiRwoOUkVTX0VOVEVSX1JPT00SJAoGcGxheWVyGAEgASgLMhQu",
-            "UHJvdG9jb2wuT2JqZWN0SW5mbxIPCgdzdWNjZXNzGAIgASgIIgsKCVJFUV9M",
-            "RUFWRSIdCglSRVNfTEVBVkUSEAoIb2JqZWN0SWQYASABKAQiLQoLUkVRX1JF",
-            "U1BBV04SEAoIb2JqZWN0SWQYASABKAQSDAoEbmFtZRgCIAEoCSI/CglSRVNf",
-            "U1BBV04SJAoGcGxheWVyGAEgASgLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbxIM",
-            "CgRtaW5lGAIgASgIIjYKDVJFU19TUEFXTl9BTEwSJQoHcGxheWVycxgBIAMo",
-            "CzIULlByb3RvY29sLk9iamVjdEluZm8iGgoLUkVTX0RFU1BBV04SCwoDaWRz",
-            "GAEgAygEIi0KDVJFU19DSEFOR0VfSFASEAoIb2JqZWN0SWQYASABKAQSCgoC",
-            "aHAYAiABKA0iLQoHUkVTX0RJRRIQCghvYmplY3RJZBgBIAEoBBIQCghhdHRh",
-            "Y2tlchgCIAEoBCIwCghSRVFfTU9WRRIkCgRpbmZvGAEgASgLMhYuUHJvdG9j",
-            "b2wuUG9zaXRpb25JbmZvIjAKCFJFU19NT1ZFEiQKBnBsYXllchgBIAEoCzIU",
-            "LlByb3RvY29sLk9iamVjdEluZm8iOwoRUkVTX1NQQVdOX01PTlNURVISJgoI",
-            "bW9uc3RlcnMYASADKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZvIjkKEFJFU19N",
-            "T1ZFX01PTlNURVISJQoHbW9uc3RlchgBIAEoCzIULlByb3RvY29sLk9iamVj",
-            "dEluZm8iRwoRUkVRX0FUVEFDS19PQkpFQ1QSEAoIYXR0YWNrZXIYASABKAQS",
-            "EAoIb2JqZWN0SWQYAiABKAQSDgoGZGFtYWdlGAMgASgNIlkKEVJFU19BVFRB",
-            "Q0tfT0JKRUNUEhAKCGF0dGFja2VyGAEgASgEEhAKCG9iamVjdElkGAIgASgE",
-            "Eg4KBmRhbWFnZRgDIAEoDRIQCghyZW1haW5IcBgEIAEoDWIGcHJvdG8z"));
+            "b2wuT2JqZWN0SW5mbxIQCghpc0NyZWF0ZRgDIAEoCCImChJSRVFfTEVBVkVf",
+            "R0FNRVJPT00SEAoIb2JqZWN0SWQYASABKAQiOAoSUkVTX0xFQVZFX0dBTUVS",
+            "T09NEhAKCHJvb21OYW1lGAEgASgJEhAKCG9iamVjdElkGAIgASgEIh4KDlJF",
+            "UV9FTlRFUl9ST09NEgwKBG5hbWUYASABKAkiRwoOUkVTX0VOVEVSX1JPT00S",
+            "JAoGcGxheWVyGAEgASgLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbxIPCgdzdWNj",
+            "ZXNzGAIgASgIIgsKCVJFUV9MRUFWRSIdCglSRVNfTEVBVkUSEAoIb2JqZWN0",
+            "SWQYASABKAQiLQoLUkVRX1JFU1BBV04SEAoIb2JqZWN0SWQYASABKAQSDAoE",
+            "bmFtZRgCIAEoCSI/CglSRVNfU1BBV04SJAoGcGxheWVyGAEgASgLMhQuUHJv",
+            "dG9jb2wuT2JqZWN0SW5mbxIMCgRtaW5lGAIgASgIIjYKDVJFU19TUEFXTl9B",
+            "TEwSJQoHcGxheWVycxgBIAMoCzIULlByb3RvY29sLk9iamVjdEluZm8iGgoL",
+            "UkVTX0RFU1BBV04SCwoDaWRzGAEgAygEIi0KDVJFU19DSEFOR0VfSFASEAoI",
+            "b2JqZWN0SWQYASABKAQSCgoCaHAYAiABKA0iLQoHUkVTX0RJRRIQCghvYmpl",
+            "Y3RJZBgBIAEoBBIQCghhdHRhY2tlchgCIAEoBCIwCghSRVFfTU9WRRIkCgRp",
+            "bmZvGAEgASgLMhYuUHJvdG9jb2wuUG9zaXRpb25JbmZvIjAKCFJFU19NT1ZF",
+            "EiQKBnBsYXllchgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8iOwoRUkVT",
+            "X1NQQVdOX01PTlNURVISJgoIbW9uc3RlcnMYASADKAsyFC5Qcm90b2NvbC5P",
+            "YmplY3RJbmZvIjkKEFJFU19NT1ZFX01PTlNURVISJQoHbW9uc3RlchgBIAEo",
+            "CzIULlByb3RvY29sLk9iamVjdEluZm8iRwoRUkVRX0FUVEFDS19PQkpFQ1QS",
+            "EAoIYXR0YWNrZXIYASABKAQSEAoIb2JqZWN0SWQYAiABKAQSDgoGZGFtYWdl",
+            "GAMgASgNIlkKEVJFU19BVFRBQ0tfT0JKRUNUEhAKCGF0dGFja2VyGAEgASgE",
+            "EhAKCG9iamVjdElkGAIgASgEEg4KBmRhbWFnZRgDIAEoDRIQCghyZW1haW5I",
+            "cBgEIAEoDWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_ENTER), global::Protocol.REQ_ENTER.Parser, new[]{ "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_ENTER), global::Protocol.RES_ENTER.Parser, new[]{ "Player", "Success" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_ENTER_GAMEROOM), global::Protocol.REQ_ENTER_GAMEROOM.Parser, new[]{ "Name", "IsCreate" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_ENTER_GAMEROOM), global::Protocol.RES_ENTER_GAMEROOM.Parser, new[]{ "MemberCount", "Players" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_ENTER_GAMEROOM), global::Protocol.RES_ENTER_GAMEROOM.Parser, new[]{ "MemberCount", "Players", "IsCreate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_LEAVE_GAMEROOM), global::Protocol.REQ_LEAVE_GAMEROOM.Parser, new[]{ "ObjectId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.RES_LEAVE_GAMEROOM), global::Protocol.RES_LEAVE_GAMEROOM.Parser, new[]{ "RoomName", "ObjectId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.REQ_ENTER_ROOM), global::Protocol.REQ_ENTER_ROOM.Parser, new[]{ "Name" }, null, null, null, null),
@@ -768,6 +769,7 @@ namespace Protocol {
     public RES_ENTER_GAMEROOM(RES_ENTER_GAMEROOM other) : this() {
       memberCount_ = other.memberCount_;
       players_ = other.players_.Clone();
+      isCreate_ = other.isCreate_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -800,6 +802,18 @@ namespace Protocol {
       get { return players_; }
     }
 
+    /// <summary>Field number for the "isCreate" field.</summary>
+    public const int IsCreateFieldNumber = 3;
+    private bool isCreate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsCreate {
+      get { return isCreate_; }
+      set {
+        isCreate_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -817,6 +831,7 @@ namespace Protocol {
       }
       if (MemberCount != other.MemberCount) return false;
       if(!players_.Equals(other.players_)) return false;
+      if (IsCreate != other.IsCreate) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -826,6 +841,7 @@ namespace Protocol {
       int hash = 1;
       if (MemberCount != 0) hash ^= MemberCount.GetHashCode();
       hash ^= players_.GetHashCode();
+      if (IsCreate != false) hash ^= IsCreate.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -849,6 +865,10 @@ namespace Protocol {
         output.WriteUInt32(MemberCount);
       }
       players_.WriteTo(output, _repeated_players_codec);
+      if (IsCreate != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsCreate);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -864,6 +884,10 @@ namespace Protocol {
         output.WriteUInt32(MemberCount);
       }
       players_.WriteTo(ref output, _repeated_players_codec);
+      if (IsCreate != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsCreate);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -878,6 +902,9 @@ namespace Protocol {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MemberCount);
       }
       size += players_.CalculateSize(_repeated_players_codec);
+      if (IsCreate != false) {
+        size += 1 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -894,6 +921,9 @@ namespace Protocol {
         MemberCount = other.MemberCount;
       }
       players_.Add(other.players_);
+      if (other.IsCreate != false) {
+        IsCreate = other.IsCreate;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -917,6 +947,10 @@ namespace Protocol {
             players_.AddEntriesFrom(input, _repeated_players_codec);
             break;
           }
+          case 24: {
+            IsCreate = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -938,6 +972,10 @@ namespace Protocol {
           }
           case 18: {
             players_.AddEntriesFrom(ref input, _repeated_players_codec);
+            break;
+          }
+          case 24: {
+            IsCreate = input.ReadBool();
             break;
           }
         }
