@@ -10,7 +10,7 @@ public class LoginScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Login;
-        Managers.UI.ShowPopupUI<UI_Login>();
+        Managers.UI.m_login = Managers.UI.ShowPopupUI<UI_Login>();
     }
 
     public void TurnScene()

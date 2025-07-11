@@ -11,11 +11,18 @@ public class LobbyScene : BaseScene
         Managers.UI.m_lobby = Managers.UI.ShowPopupUI<UI_Lobby>();
         Managers.Network.CoonectServer();
 
-        Protocol.REQ_ENTER pkt = new()
+        if (Managers.UI.m_isNewAccount)
         {
-            Name = "Name",
-        };
-        Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+            Managers.UI.ShowPopupUI<UI_InputName>();
+        }
+        else
+        {
+            Protocol.REQ_ENTER pkt = new()
+            {
+                Name = Managers.UI.m_playerName,
+            };
+            Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+        }
     }
 
     public void TurnGameScene()

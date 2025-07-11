@@ -38,14 +38,16 @@ public class UI_Login : UI_Popup
         GetText((int)Texts.FindText).gameObject.AddUIEvent((PointerEventData) => { Managers.UI.ShowPopupUI<UI_FindId>(); });
     }
 
+    public string PlayerId;
+
     public void LoginReq(System.Action<bool, string> callback)
     {
-        string playerId = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
+        PlayerId = GetObject((int)GameObjects.InputId).GetComponent<InputField>().text;
         string password = GetObject((int)GameObjects.InputPassword).GetComponent<InputField>().text;
 
         LoginRequest request = new LoginRequest
         {
-            playerId = playerId,
+            playerId = PlayerId,
             password = password
         };
 
@@ -72,6 +74,7 @@ public class UI_Login : UI_Popup
 
                 PlayerPrefs.SetString("SESSION_ID", res.sessionId);
                 PlayerPrefs.SetString("USER_ID", res.playerId);
+                Managers.UI.m_isNewAccount = res.isNewAccount;
 
                 callback(true, response);
             },
