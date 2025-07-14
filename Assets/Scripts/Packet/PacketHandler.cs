@@ -17,13 +17,20 @@ public class PacketHandler
         RES_LEAVE leavePacket = packet as RES_LEAVE;
         Managers.Object.Remove(leavePacket.ObjectId);
     }
+    public static UI_CreateRoom createRoom;
     public static void ResEnterGameRoomHandler(PacketSession session, IMessage packet)
     {
         RES_ENTER_GAMEROOM enterPacket = packet as RES_ENTER_GAMEROOM;
 
         Debug.Log("ResEnterGameRoomHandler");
-        var createRoom = Managers.UI.ShowPopupUI<UI_CreateRoom>();
+        createRoom = Managers.UI.ShowPopupUI<UI_CreateRoom>();
         createRoom.SetPlayer(enterPacket);
+    }
+    public static void ResEnterGameRoomAllHandler(PacketSession session, IMessage packet)
+    {
+        RES_ENTER_GAMEROOM_ALL enterPacket = packet as RES_ENTER_GAMEROOM_ALL;
+
+        createRoom.SetPlayerAll(enterPacket);
     }
     public static void ResLeaveGameRoomHandler(PacketSession session, IMessage packet)
     {
