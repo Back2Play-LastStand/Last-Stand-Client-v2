@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Networking;
 [System.Serializable]
 public class PlayerNameResponse
 {
-    public string PlayerName;
+    public string playerName;
 }
 
 public class UIManager
@@ -38,7 +39,7 @@ public class UIManager
         }
     }
 
-    public IEnumerator GetPlayerName(string playerId)
+    public IEnumerator GetPlayerName(string playerId, Action<string> onSuccess)
     {
         string sessionId = PlayerPrefs.GetString("SESSION_ID");
         string url = WebRequestManager.Instance.serverConn.GetPlayerNameUrl(playerId);
@@ -53,7 +54,9 @@ public class UIManager
             Debug.Log("Player name response: " + request.downloadHandler.text);
             
             PlayerNameResponse res = JsonUtility.FromJson<PlayerNameResponse>(request.downloadHandler.text);
-            m_playerName = res.PlayerName;
+            m_playerName = res.playerName;
+
+            onSuccess?.Invoke(m_playerName);
         }
         else
         {
