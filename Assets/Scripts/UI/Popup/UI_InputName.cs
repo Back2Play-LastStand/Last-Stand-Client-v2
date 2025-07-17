@@ -48,14 +48,16 @@ public class UI_InputName : UI_Popup
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Player created: " + request.downloadHandler.text);
-            StartCoroutine(Managers.UI.GetPlayerName(playerId));
-            ClosePopupUI();
-            // 첫 로그인이면 보내기
-            Protocol.REQ_ENTER pkt = new()
+            StartCoroutine(Managers.UI.GetPlayerName(playerId, (playerName) =>
             {
-                Name = Managers.UI.m_playerName,
-            };
-            Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+                ClosePopupUI();
+                // 첫 로그인이면 보내기
+                Protocol.REQ_ENTER pkt = new()
+                {
+                    Name = Managers.UI.m_playerName,
+                };
+                Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+            }));
         }
         else
         {

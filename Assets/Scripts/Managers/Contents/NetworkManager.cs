@@ -32,10 +32,14 @@ public class NetworkManager : MonoBehaviour
         _ipEndPoint = new IPEndPoint(_ipAddr, port);
     }
 
-    public void CoonectServer()
+    public void CoonectServer(Action<Session> success)
     {
         _connector.Connect(_ipEndPoint,
-            () => { return _session; });
+            () =>
+            {
+                success?.Invoke(_session);
+                return _session;
+            });
     }
 
     public void Update()
