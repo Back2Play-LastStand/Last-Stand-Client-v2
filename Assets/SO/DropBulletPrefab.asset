@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab69023cd0ee4784d928007f02d54ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 25ea08457fd4a468d993ae5b8c1f0309, type: 3}
   m_Name: DropBulletPrefab
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::SOItem
   itemName: DropBullet
   level: 1
   stats: []
   maxStack: 1
   price: 0
-  icon: {fileID: 6643148387279557998, guid: 21b8cb85f2fca0c41a810a7ab4ba8415, type: 3}
-  prefab: {fileID: 6633447179500989562, guid: 58714a32c3aaa574d9e99118c703f987, type: 3}
-  description: "\uBAAC\uC2A4\uD130\uAC00 \uC8FD\uC5C8\uC744 \uB54C \n\uB4DC\uB78D\uD558\uB294
-    \uCD1D\uC54C SO"
+  icon: {fileID: 0}
+  prefab: {fileID: 0}
+  description: 
