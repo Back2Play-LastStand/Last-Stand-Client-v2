@@ -16,6 +16,8 @@ public class EnemyAI : Monster
     ActionNode idleAction;
     ActionNode returnAction;
     Transform target;
+
+    [SerializeField] Animator anim;
     public LayerMask detectionLayer;
 
     Vector3 originPos;
@@ -25,6 +27,7 @@ public class EnemyAI : Monster
         base.Start();
 
         originPos = transform.position;
+        anim = GetComponent<Animator>();
 
         attackSequence = new SequenceNode();
         attackSequence.Add(new ActionNode(CheckInAttackRange));
@@ -59,6 +62,7 @@ public class EnemyAI : Monster
 
         Debug.Log("°ø°ÝÁß");
         // Add Attack Animation
+        anim.SetTrigger("Attack");
         Debug.Log($"Attacker: {Id}");
         Protocol.REQ_ATTACK_OBJECT attack = new()
         {

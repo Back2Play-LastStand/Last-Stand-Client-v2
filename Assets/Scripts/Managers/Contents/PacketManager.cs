@@ -11,24 +11,25 @@ public enum PacketId : ushort
     PKT_RES_ENTER = 1001,
     PKT_REQ_ENTER_GAMEROOM = 1002,
     PKT_RES_ENTER_GAMEROOM = 1003,
-    PKT_REQ_LEAVE_GAMEROOM = 1004,
-    PKT_RES_LEAVE_GAMEROOM = 1005,
-    PKT_REQ_ENTER_ROOM = 1006,
-    PKT_RES_ENTER_ROOM = 1007,
-    PKT_REQ_LEAVE = 1008,
-    PKT_RES_LEAVE = 1009,
-    PKT_REQ_RESPAWN = 1010,
-    PKT_RES_SPAWN = 1011,
-    PKT_RES_SPAWN_ALL = 1012,
-    PKT_RES_DESPAWN = 1013,
-    PKT_RES_CHANGE_HP = 1014,
-    PKT_RES_DIE = 1015,
-    PKT_REQ_MOVE = 1016,
-    PKT_RES_MOVE = 1017,
-    PKT_RES_SPAWN_MONSTER = 1018,
-    PKT_RES_MOVE_MONSTER = 1019,
-    PKT_REQ_ATTACK_OBJECT = 1020,
-    PKT_RES_ATTACK_OBJECT = 1021,
+    PKT_RES_ENTER_GAMEROOM_ALL = 1004,
+    PKT_REQ_LEAVE_GAMEROOM = 1005,
+    PKT_RES_LEAVE_GAMEROOM = 1006,
+    PKT_REQ_ENTER_ROOM = 1007,
+    PKT_RES_ENTER_ROOM = 1008,
+    PKT_REQ_LEAVE = 1009,
+    PKT_RES_LEAVE = 1010,
+    PKT_REQ_RESPAWN = 1011,
+    PKT_RES_SPAWN = 1012,
+    PKT_RES_SPAWN_ALL = 1013,
+    PKT_RES_DESPAWN = 1014,
+    PKT_RES_CHANGE_HP = 1015,
+    PKT_RES_DIE = 1016,
+    PKT_REQ_MOVE = 1017,
+    PKT_RES_MOVE = 1018,
+    PKT_RES_SPAWN_MONSTER = 1019,
+    PKT_RES_MOVE_MONSTER = 1020,
+    PKT_REQ_ATTACK_OBJECT = 1021,
+    PKT_RES_ATTACK_OBJECT = 1022,
 }
 
 public class PacketManager : MonoBehaviour
@@ -51,6 +52,8 @@ public class PacketManager : MonoBehaviour
         _handler.Add((ushort)PacketId.PKT_RES_LEAVE, PacketHandler.ResLeaveHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_ENTER_GAMEROOM, MakePacket<Protocol.RES_ENTER_GAMEROOM>);
         _handler.Add((ushort)PacketId.PKT_RES_ENTER_GAMEROOM, PacketHandler.ResEnterGameRoomHandler);
+        _onRecv.Add((ushort)PacketId.PKT_RES_ENTER_GAMEROOM_ALL, MakePacket<Protocol.RES_ENTER_GAMEROOM_ALL>);
+        _handler.Add((ushort)PacketId.PKT_RES_ENTER_GAMEROOM_ALL, PacketHandler.ResEnterGameRoomAllHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_LEAVE_GAMEROOM, MakePacket<Protocol.RES_LEAVE_GAMEROOM>);
         _handler.Add((ushort)PacketId.PKT_RES_LEAVE_GAMEROOM, PacketHandler.ResLeaveGameRoomHandler);
         _onRecv.Add((ushort)PacketId.PKT_RES_ENTER_ROOM, MakePacket<Protocol.RES_ENTER_ROOM>);

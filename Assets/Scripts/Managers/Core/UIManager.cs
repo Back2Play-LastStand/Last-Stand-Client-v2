@@ -1,6 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+
+[System.Serializable]
+public class PlayerNameResponse
+{
+    public string playerName;
+}
 
 public class UIManager
 {
@@ -11,6 +19,10 @@ public class UIManager
 
     public UI_Interface m_Interface;
     public UI_Lobby m_lobby;
+    public UI_Login m_login;
+
+    public string m_playerName;
+    public bool m_isNewAccount = false;
 
     public void Init()
     {
@@ -24,6 +36,38 @@ public class UIManager
             if (root == null)
                 root = new GameObject { name = "@UI_Root" };
             return root;
+        }
+    }
+
+    public IEnumerator GetPlayerName(string playerId, Action<string> onSuccess)
+    {
+        string sessionId = PlayerPrefs.GetString("SESSION_ID");
+        string url = WebRequestManager.Instance.serverConn.GetPlayerNameUrl(playerId);
+
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        request.SetRequestHeader("Session-Id", sessionId);
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Player name response: " + request.downloadHandler.text);
+            
+            PlayerNameResponse res = JsonUtility.FromJson<PlayerNameResponse>(request.downloadHandler.text);
+            m_playerName = res.playerName;
+
+            onSuccess?.Invoke(m_playerName);
+        }
+        else
+        {
+            Debug.LogError($"Error: {request.responseCode} - {request.downloadHandler.text}");
+
+            if (request.responseCode == 401)
+            {
+                Debug.LogWarning("Session expired. Please log in again.");
+                PlayerPrefs.DeleteKey("SESSION_ID");
+                // 로그인 화면으로 이동 처리 (예: SceneManager.LoadScene("LoginScene"))
+            }
         }
     }
 

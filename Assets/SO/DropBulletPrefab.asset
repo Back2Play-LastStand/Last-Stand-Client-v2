@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ea08457fd4a468d993ae5b8c1f0309, type: 3}
+  m_Name: DropBulletPrefab
+  m_EditorClassIdentifier: Assembly-CSharp::SOItem
+  itemName: DropBullet
+  level: 1
+  stats: []
+  maxStack: 1
+  price: 0
+  icon: {fileID: 0}
+  prefab: {fileID: 6633447179500989562, guid: b4a0e0d7d20b54e4490cf2f588cf376d, type: 3}
+  description: "\uBAAC\uC2A4\uD130\uAC00 \uC8FD\uC5C8\uC744 \uB54C \n\uD655\uB960\uC801\uC73C\uB85C
+    \uB4DC\uB86D\uD558\uB294 \uCD1D\uC54C\uC774\uB2E4."

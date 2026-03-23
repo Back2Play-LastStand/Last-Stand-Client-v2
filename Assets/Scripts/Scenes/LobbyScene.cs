@@ -9,13 +9,24 @@ public class LobbyScene : BaseScene
         base.Init();
 
         Managers.UI.m_lobby = Managers.UI.ShowPopupUI<UI_Lobby>();
-        Managers.Network.CoonectServer();
-
-        Protocol.REQ_ENTER pkt = new()
+        Managers.Network.CoonectServer(success =>
         {
-            Name = "Name",
-        };
-        Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+            if (Managers.UI.m_isNewAccount)
+            {
+                Managers.UI.ShowPopupUI<UI_InputName>();
+            }
+            else
+            {
+                StartCoroutine(Managers.UI.GetPlayerName(Managers.UI.m_login.PlayerId, (playerName) =>
+                {
+                    Protocol.REQ_ENTER pkt = new()
+                    {
+                        Name = playerName,
+                    };
+                    Managers.Network.Send(pkt, (ushort)PacketId.PKT_REQ_ENTER);
+                }));
+            }
+        });
     }
 
     public void TurnGameScene()

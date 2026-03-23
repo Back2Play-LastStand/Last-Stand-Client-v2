@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 941786550489000366}
   - component: {fileID: 1911150895067426364}
   - component: {fileID: 438315552190894745}
-  - component: {fileID: 1676344368754083464}
+  - component: {fileID: 8498600208687882644}
   m_Layer: 5
   m_Name: UI_Respawn
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1676344368754083464
+--- !u!114 &8498600208687882644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,9 +112,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6677910409958547106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58f7a7a0952d8c4facd7e538aba0ab3, type: 3}
+  m_Script: {fileID: 11500000, guid: bfc7ed502f5414e678745980bdaf8c21, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Respawn
 --- !u!1 &8234110408099335120
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,8 +261,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4f9470802b7490548936170e31e6640c, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -280,6 +280,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8306784971584847552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6afdafcca6285b8489ac4827a5f48dd8, type: 3}
+  m_Script: {fileID: 11500000, guid: a79dea6b2676f46e8b37b6a18865354e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

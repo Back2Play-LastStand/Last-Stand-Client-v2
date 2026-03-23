@@ -8,6 +8,7 @@ using UnityEngine;
 public class Connector
 {
     Func<Session> _sessionFactory;
+    Session _connectSession;
 
     public void Connect(IPEndPoint ipEndPoint, Func<Session> sessionFactory, int count = 1)
     {
@@ -43,6 +44,8 @@ public class Connector
             Session session = _sessionFactory.Invoke();
             session.Start(args.ConnectSocket);
             session.OnConnected(args.RemoteEndPoint);
+
+            _connectSession = session;
         }
         else
         {
@@ -52,7 +55,6 @@ public class Connector
 
     public void Disconnect()
     {
-        Session session = _sessionFactory.Invoke();
-        session.Disconnect();
+        _connectSession?.Disconnect();
     }
 }
