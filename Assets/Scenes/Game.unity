@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225748437}
-  - component: {fileID: 225748436}
   - component: {fileID: 225748438}
   m_Layer: 0
   m_Name: '@Scene'
@@ -137,18 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &225748436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225748435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b73fc09e3454bfaafc4d7fd7c24afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &225748437
 Transform:
   m_ObjectHideFlags: 0
@@ -583,10 +570,6 @@ PrefabInstance:
     - target: {fileID: 3492990599805868162, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6152393029463112916, guid: 2abcd0600dc631843aff3c77070460f5, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
