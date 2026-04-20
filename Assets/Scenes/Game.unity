@@ -531,6 +531,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_City
       objectReference: {fileID: 0}
+    - target: {fileID: 885395279438628807, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132312820487225598, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707412892555198052, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3492990599805868162, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -570,6 +582,18 @@ PrefabInstance:
     - target: {fileID: 3492990599805868162, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595783476243440906, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152393029463112916, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615290597338896926, guid: 41f717eaa531044a7a0a294a9d7b1c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
